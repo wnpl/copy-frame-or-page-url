@@ -15,17 +15,14 @@
 var oPrefs = {
     allpages: true,         // Copy the URL of the page even if it's in the top frame
     allpagesmenu: false,    // Current menu status
-    contexticon: false,        // Option to use context fill color for toolbar icons
-    contexticonstatus: false,    // Whether context-fill icon is in use
     clickplain: 'url',        // Plain click on browser action copies URL only
     clickshift: 'markdown',    // Shift+click on browser action copies markdown
     clickctrl: 'html',        // Shift+click on browser action copies html
     pageaction: false,        // Button in the address bar
-    darkmode: false,        // Option to use dark icon for Page Action
     decode: true            // Option to decode Unicode URLs
 }
 let pagemenu;
-let iconpath = 'icons/link-64px-green.svg'; // default path, potentially updated later
+let iconpath = 'icons/link-64.svg'; // default path, potentially updated later
 
 // Update oPrefs from storage
 let getPrefs = browser.storage.local.get("prefs").then((results) => {
@@ -38,12 +35,9 @@ let getPrefs = browser.storage.local.get("prefs").then((results) => {
         }
     }
 }).then(() => {
-    if (oPrefs.contexticon == true){
-        iconpath = 'icons/link-64px.svg';
-        oPrefs.contexticonstatus = true;
+        iconpath = 'icons/link-64.svg';
         // Update toolbar icon (async)
         browser.browserAction.setIcon({path: iconpath});
-    }
     if (oPrefs.allpages == true){
         pagemenu = browser.menus.create({
             id: "copy-page-url",
@@ -185,21 +179,12 @@ browser.commands.onCommand.addListener((strName) => {
 
 function showPageAction(tabId){
     browser.pageAction.show(tabId);
-    if (oPrefs.darkmode == true){ // as of v1.4, same icon
-        browser.pageAction.setIcon({
-            tabId: tabId,
-            path: {
-                64: iconpath
-            }
-        });
-    } else {
-        browser.pageAction.setIcon({
-            tabId: tabId,
-            path: {
-                64: iconpath
-            }
-        });
-    }
+    browser.pageAction.setIcon({
+        tabId: tabId,
+        path: {
+            64: iconpath
+        }
+    });
     browser.pageAction.setTitle({
         tabId: tabId,
         title: buttonTitle
@@ -257,52 +242,3 @@ function handleMessage(request, sender, sendResponse){
         // Receive pref updates from Options page, store to oPrefs, and commit to storage
         var oSettings = request["update"];
         oPrefs.allpages = oSettings.allpages;
-        // Icon change
-        oPrefs.contexticon = oSettings.contexticon;
-        if (oPrefs.contexticon == true && oPrefs.contexticonstatus == false) {
-            iconpath = 'icons/link-64px.svg';
-            oPrefs.contexticonstatus = true;
-            // Update toolbar icon (async)
-            browser.browserAction.setIcon({path: iconpath});
-            // Update menu icon (NOT POSSIBLE FOR TOP LEVEL ITEMS)
-        } else if (oPrefs.contexticon == false && oPrefs.contexticonstatus == true) {
-            iconpath = 'icons/link-64px-green.svg';
-            oPrefs.contexticonstatus = false;
-            // Update toolbar icon (async)
-            browser.browserAction.setIcon({path: iconpath});
-            // Update menu icon (NOT POSSIBLE FOR TOP LEVEL ITEMS)
-        }
-        oPrefs.clickplain = oSettings.clickplain;
-        oPrefs.clickshift = oSettings.clickshift;
-        oPrefs.clickctrl = oSettings.clickctrl;
-        oPrefs.decode = oSettings.decode;
-        // Check for Page Action changes
-        oPrefs.darkmode = oSettings.darkmode;
-        if (oSettings.pageaction == true && oPrefs.pageaction == false){
-            browser.tabs.onUpdated.addListener(showPageAction);
-        } else if (oSettings.pageaction == false && oPrefs.pageaction == true){
-            browser.tabs.onUpdated.removeListener(showPageAction);
-        }
-        oPrefs.pageaction = oSettings.pageaction;
-        browser.storage.local.set({prefs: oPrefs})
-            .catch((err) => {console.log('Error on browser.storage.local.set(): '+err.message);});
-        // Add or remove menu
-        if (oPrefs.allpages == true && oPrefs.allpagesmenu == false) {
-            browser.menus.create({
-                id: "copy-page-url",
-                title: "Copy Page URL",
-                contexts: ["page", "selection"]
-            }, function(){ // Optimistic!
-                oPrefs.allpagesmenu = true;
-            });
-        } else if (oPrefs.allpages == false && oPrefs.allpagesmenu == true) {
-            pagemenu = browser.menus.remove("copy-page-url");
-            pagemenu.then(() => {
-                oPrefs.allpagesmenu = false;
-            });
-        }
-        // Fix button tooltips
-        updateButtonTooltips();
-    }
-}
-browser.runtime.onMessage.addListener(handleMessage);

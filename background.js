@@ -179,20 +179,12 @@ browser.commands.onCommand.addListener((strName) => {
 
 function showPageAction(tabId){
     browser.pageAction.show(tabId);
-        browser.pageAction.setIcon({
-            tabId: tabId,
-            path: {
-                64: iconpath
-            }
-        });
-    } else {
-        browser.pageAction.setIcon({
-            tabId: tabId,
-            path: {
-                64: iconpath
-            }
-        });
-    }
+    browser.pageAction.setIcon({
+        tabId: tabId,
+        path: {
+            64: iconpath
+        }
+    });
     browser.pageAction.setTitle({
         tabId: tabId,
         title: buttonTitle
@@ -293,3 +285,4 @@ function handleMessage(request, sender, sendResponse){
     }
 }
 browser.runtime.onMessage.addListener(handleMessage);
+

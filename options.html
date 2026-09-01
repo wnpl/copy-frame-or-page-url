@@ -2,40 +2,49 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Options for Copy Framed URL 1.4</title>
-<style>
-body {margin: 8px 16px; background-color: #dff; font-size: 16px;}
-p {margin-top: 0;}
-</style>
+<title data-i18n="optionsPageTitle"></title>
 </head>
 <body>
 <form>
-<p class="chk"><label><input type="checkbox" name="allpages"> Show context menu item on all pages, framed or not</label><br>
+<p class="chk"><label><input type="checkbox" name="allpages"> <span data-i18n="optionAllPages"></span></label><br>
 
-<p><strong>Optional address bar (page action) button:</strong></p>
-<p class="chk"><label><input type="checkbox" name="pageaction"> Show button inside address bar</label><br>
+<p><strong data-i18n="sectionPageActionButton"></strong></p>
+<p class="chk"><label><input type="checkbox" name="pageaction"> <span data-i18n="optionShowPageAction"></span></label><br>
 
-<p><strong>Action performed by toolbar button or context menu item with different modifiers:</strong></p>
-<p><label>Plain click:&nbsp; <select name="clickplain">
-    <option value="url">Plain URL only</option>
-    <option value="markdown">Markdown: [title](url)</option>
-    <option value="html">HTML: &lt;a href="url"&gt;title&lt;/a&gt;</option>
-</select></label><br>
-<label>Shift+click: <select name="clickshift">
-    <option value="url">Plain URL only</option>
-    <option value="markdown">Markdown: [title](url)</option>
-    <option value="html">HTML: &lt;a href="url"&gt;title&lt;/a&gt;</option>
-</select></label><br>
-<label>Ctrl+click: <select name="clickctrl">
-    <option value="url">Plain URL only</option>
-    <option value="markdown">Markdown: [title](url)</option>
-    <option value="html">HTML: &lt;a href="url"&gt;title&lt;/a&gt;</option>
-</select></label> (on Mac, Command+click)<br><br><em>Note: Copying a frame URL is limited to the plain URL.</em></p>
-<p><strong>Miscellaneous Options</strong></p>
-<p class="chk"><label><input type="checkbox" name="decode"> Decode Unicode characters in the URL (for example, 茶 instead of %E8%8C%B6)</label>
-</form>
-<p><strong>Optional keyboard shortcut:</strong></p>
-<p>Click the gear button on the Add-ons page, then "Manage Extension Shortcuts" (see: <a href="https://support.mozilla.org/kb/manage-extension-shortcuts-firefox">Manage extension shortcuts in Firefox</a>)</p>
+<p><strong data-i18n="sectionModifierActions"></strong></p>
+<p>
+<label><span data-i18n="labelClickPlain"></span>&nbsp; 
+<select name="clickplain">
+    <option value="url" data-i18n="formatUrl"></option>
+    <option value="markdown" data-i18n="formatMarkdown"></option>
+    <option value="html" data-i18n="formatHtml"></option>
+</select>
+</label><br>
+
+<label><span data-i18n="labelClickShift"></span> 
+<select name="clickshift">
+    <option value="url" data-i18n="formatUrl"></option>
+    <option value="markdown" data-i18n="formatMarkdown"></option>
+    <option value="html" data-i18n="formatHtml"></option>
+</select>
+</label><br>
+
+<label><span data-i18n="labelClickCtrl"></span> 
+<select name="clickctrl">
+    <option value="url" data-i18n="formatUrl"></option>
+    <option value="markdown" data-i18n="formatMarkdown"></option>
+    <option value="html" data-i18n="formatHtml"></option>
+</select>
+</label> (on Mac, Command+click)<br><br>
+<em data-i18n="noteFrameUrlLimitation"></em>
+</p>
+
+<p><strong data-i18n="sectionMiscellaneous"></strong></p>
+<p class="chk"><label><input type="checkbox" name="decode"> <span data-i18n="optionDecodeUnicode"></span></label>
+
+<p><strong data-i18n="sectionKeyboardShortcut"></strong></p>
+<p data-i18n="linkManageShortcuts"></p>
+
 <script src="options.js"></script>
 </body>
 </html>

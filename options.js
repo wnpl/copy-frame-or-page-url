@@ -3,6 +3,30 @@ browser.runtime.sendMessage({
 	get: "oPrefs"
 }).then((response) => {
 	var oSettings = response['prefs'];
+
+	// --- i18n: Set all text elements ---
+	document.title = browser.i18n.getMessage("optionsPageTitle");
+	
+	// Set labels and sections
+	const i18nElements = document.querySelectorAll('[data-i18n]');
+	i18nElements.forEach(el => {
+		const key = el.getAttribute('data-i18n');
+		if (key) {
+			el.textContent = browser.i18n.getMessage(key);
+		}
+	});
+	
+	// Set option texts for selects
+	const formatOptions = {
+		url: browser.i18n.getMessage("formatUrl"),
+		markdown: browser.i18n.getMessage("formatMarkdown"),
+		html: browser.i18n.getMessage("formatHtml")
+	};
+	
+	document.querySelectorAll('select[name^="click"] option').forEach(option => {
+		option.textContent = formatOptions[option.value];
+	});
+
 	// Checkboxes
 	var chks = document.querySelectorAll('.chk input[type="checkbox"]');
 	for (var i=0; i<chks.length; i++){
@@ -13,11 +37,14 @@ browser.runtime.sendMessage({
 	var sels = document.querySelectorAll('select[name^="click"]');
 	for (var i=0; i<sels.length; i++){
 		var selopt = document.querySelector('select[name="' + sels[i].name + '"] option[value="' + oSettings[sels[i].name] + '"]');
-		selopt.setAttribute('selected', 'selected');
+		if (selopt) {
+			selopt.setAttribute('selected', 'selected');
+		}
 	}
 }).catch((err) => {
 	console.log('Problem getting settings: '+err.message);
 });
+
 
 // Send changes to background for storage
 function updatePref(evt){
@@ -37,6 +64,7 @@ function updatePref(evt){
 		update: oSettings
 	});
 }
+
 
 // Attach event handler to the checkboxes and selects
 var chks = document.querySelectorAll('.chk input[type="checkbox"]');

@@ -39,7 +39,7 @@ let getPrefs = browser.storage.local.get("prefs").then((results) => {
     if (oPrefs.allpages == true){
         pagemenu = browser.menus.create({
             id: "copy-page-url",
-            title: "Copy Page URL",
+            title: browser.i18n.getMessage("menuCopyPageUrl"),
             contexts: ["page", "selection"]
         }, function(){ // Optimistic!
             oPrefs.allpagesmenu = true;
@@ -55,14 +55,14 @@ let getPrefs = browser.storage.local.get("prefs").then((results) => {
 
 let framemenu = browser.menus.create({
     id: "copy-frame-url",
-    title: "Copy Framed Page URL",
+    title: browser.i18n.getMessage("menuCopyFrameUrl"),
     contexts: ["frame"]
 });
 
 // link
 let linkmenu = browser.menus.create({
     id: "copy-decode-url",
-    title: "Copy Decode URL",
+    title: browser.i18n.getMessage("menuCopyDecodeUrl"),
     contexts: ["link"]
 });
 
@@ -104,7 +104,7 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
 function updateClipboard(txt){
     // Copy to clipboard
     navigator.clipboard.writeText(txt).catch((err) => {
-        window.alert('Apologies, but there was an error writing to the clipboard: ' + err);
+        window.alert(browser.i18n.getMessage("errorClipboardWrite", err.message));
     });
 }
 
@@ -213,16 +213,19 @@ browser.pageAction.onClicked.addListener((tab, clickData) => {
 var buttonTitle = '';
 function updateButtonTooltips(){
     if (oPrefs.clickplain == 'url'){
-        buttonTitle = 'Copy Current Page URL (Shift => ' + oPrefs.clickshift + ', Ctrl => ' + oPrefs.clickctrl + ')';
+        buttonTitle = browser.i18n.getMessage("tooltipCopyUrl");
     }
     if (oPrefs.clickplain == 'markdown'){
-        buttonTitle = 'Copy Title+URL as Markdown (Shift => ' + oPrefs.clickshift + ', Ctrl => ' + oPrefs.clickctrl + ')';
+        buttonTitle = browser.i18n.getMessage("tooltipCopyMarkdown");
     }
     if (oPrefs.clickplain == 'html'){
-        buttonTitle = 'Copy Title+URL as HTML Link (Shift => ' + oPrefs.clickshift + ', Ctrl => ' + oPrefs.clickctrl + ')';
+        buttonTitle = browser.i18n.getMessage("tooltipCopyHtml");
     }
     if (buttonTitle.length > 0){
         browser.browserAction.setTitle({
+            title: buttonTitle
+        });
+        browser.pageAction.setTitle({
             title: buttonTitle
         });
     }
@@ -257,7 +260,7 @@ function handleMessage(request, sender, sendResponse){
         if (oPrefs.allpages == true && oPrefs.allpagesmenu == false) {
             browser.menus.create({
                 id: "copy-page-url",
-                title: "Copy Page URL",
+                title: browser.i18n.getMessage("menuCopyPageUrl"),
                 contexts: ["page", "selection"]
             }, function(){ // Optimistic!
                 oPrefs.allpagesmenu = true;

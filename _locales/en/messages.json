@@ -1,0 +1,128 @@
+{
+  "extensionName": {
+    "message": "Copy Frame or Page URL (Decoded)",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Right-click a framed page or any link to pop its decoded URL on the clipboard. Works on regular pages, too, unless you turn that off in Options.",
+    "description": "Description of the extension"
+  },
+  "browserActionTitle": {
+    "message": "Copy Current Page URL (Shift+click for Markdown)",
+    "description": "Tooltip for the browser action button"
+  },
+  "pageActionTitle": {
+    "message": "Copy Current Page URL (Shift+click for Markdown)",
+    "description": "Tooltip for the page action button"
+  },
+  "commandCopyPageUrl": {
+    "message": "Copy Current Page URL",
+    "description": "Keyboard shortcut command description"
+  },
+  "commandCopyPageUrlAsMarkdown": {
+    "message": "Copy Markdown of Current Page [Title](URL)",
+    "description": "Keyboard shortcut command description for markdown format"
+  },
+  "commandCopyPageUrlAsHtml": {
+    "message": "Copy HTML Link of Current Page <a href=url>Title</a>",
+    "description": "Keyboard shortcut command description for HTML format"
+  },
+  "optionsPageTitle": {
+    "message": "Options for Copy Framed URL",
+    "description": "Title of the options page"
+  },
+  "menuCopyPageUrl": {
+    "message": "Copy Page URL",
+    "description": "Context menu item for copying the page URL"
+  },
+  "menuCopyFrameUrl": {
+    "message": "Copy Framed Page URL",
+    "description": "Context menu item for copying a framed page URL"
+  },
+  "menuCopyDecodeUrl": {
+    "message": "Copy Decode URL",
+    "description": "Context menu item for copying a decoded link URL"
+  },
+  "optionAllPages": {
+    "message": "Show context menu item on all pages, framed or not",
+    "description": "Option to show the context menu on all pages"
+  },
+  "optionShowPageAction": {
+    "message": "Show button inside address bar",
+    "description": "Option to show the page action button"
+  },
+  "optionDecodeUnicode": {
+    "message": "Decode Unicode characters in the URL (for example, 茶 instead of %E8%8C%B6)",
+    "description": "Option to decode Unicode in URLs"
+  },
+  "formatUrl": {
+    "message": "Plain URL only",
+    "description": "Option for plain URL format"
+  },
+  "formatMarkdown": {
+    "message": "Markdown: [title](url)",
+    "description": "Option for Markdown format"
+  },
+  "formatHtml": {
+    "message": "HTML: <a href=\"url\">title</a>",
+    "description": "Option for HTML format"
+  },
+  "labelClickPlain": {
+    "message": "Plain click:",
+    "description": "Label for plain click action"
+  },
+  "labelClickShift": {
+    "message": "Shift+click:",
+    "description": "Label for Shift+click action"
+  },
+  "labelClickCtrl": {
+    "message": "Ctrl+click:",
+    "description": "Label for Ctrl+click action (Command+click on Mac)"
+  },
+  "noteFrameUrlLimitation": {
+    "message": "Note: Copying a frame URL is limited to the plain URL.",
+    "description": "Note about frame URL limitations"
+  },
+  "sectionPageActionButton": {
+    "message": "Optional address bar (page action) button:",
+    "description": "Section header for page action button options"
+  },
+  "sectionModifierActions": {
+    "message": "Action performed by toolbar button or context menu item with different modifiers:",
+    "description": "Section header for modifier key actions"
+  },
+  "sectionMiscellaneous": {
+    "message": "Miscellaneous Options",
+    "description": "Section header for miscellaneous options"
+  },
+  "sectionKeyboardShortcut": {
+    "message": "Optional keyboard shortcut:",
+    "description": "Section header for keyboard shortcut info"
+  },
+  "linkManageShortcuts": {
+    "message": "Click the gear button on the Add-ons page, then \"Manage Extension Shortcuts\" (see: <a href=\"https://support.mozilla.org/kb/manage-extension-shortcuts-firefox\">Manage extension shortcuts in Firefox</a>)",
+    "description": "Instructions for managing keyboard shortcuts"
+  },
+  "tooltipCopyUrl": {
+    "message": "Copy Current Page URL",
+    "description": "Tooltip for copying URL (plain)"
+  },
+  "tooltipCopyMarkdown": {
+    "message": "Copy Title+URL as Markdown",
+    "description": "Tooltip for copying as markdown"
+  },
+  "tooltipCopyHtml": {
+    "message": "Copy Title+URL as HTML Link",
+    "description": "Tooltip for copying as HTML"
+  },
+  "errorClipboardWrite": {
+    "message": "Apologies, but there was an error writing to the clipboard: $error$",
+    "description": "Error message when clipboard write fails",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "Permission denied"
+      }
+    }
+  }
+}

@@ -31,14 +31,6 @@ Since this is a modified fork, there is currently no separate AMO listing. You c
 
 The original extension is available on [Mozilla Add-ons](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/) by Jefferson "jscher2000" Scher.
 
-### Development Version
-
-1. Clone this repository or download the source code
-2. In Firefox, go to `about:debugging`
-3. Click "This Firefox" (left sidebar)
-4. Click "Load Temporary Add-on..."
-5. Select any file in the extension directory (e.g., `manifest.json`)
-
 ## Usage
 
 ### Context Menu (Right-Click)
@@ -133,16 +125,23 @@ This extension supports multiple languages:
 
 ### Building
 
-This extension uses the WebExtensions API and requires Firefox. No build step is needed.
+This extension uses the WebExtensions API and requires Firefox. No build step is needed for development, but you can create an XPI file for distribution:
+
+```bash
+# Install web-ext
+npm install --global web-ext
+
+# Build the XPI file
+web-ext build
+
+# The XPI will be in web-ext-artifacts/
+```
 
 ### Testing
 
 Use the [`web-ext` tool](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) for testing:
 
 ```bash
-# Install web-ext
-npm install --global web-ext
-
 # Run the extension in a temporary Firefox profile
 web-ext run
 
@@ -162,21 +161,12 @@ web-ext lint
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a pull request.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-### How to Contribute
+## Related Repositories
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Test thoroughly
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
-
-### Reporting Issues
-
-Please report any bugs or feature requests by [opening an issue](https://github.com/wnpl/copy-frame-or-page-url/issues).
+- [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url) - Original repository by Jefferson Scher
+- [Mozilla Add-ons Listing](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/) - Original extension on AMO
 
 ## License
 
@@ -186,8 +176,3 @@ This project is based on the original work by Jefferson "jscher2000" Scher, lice
 
 - Original extension by [Jefferson "jscher2000" Scher](https://github.com/jscher2000/copy-frame-or-page-url)
 - Modified and maintained by [wnpl](https://github.com/wnpl/)
-
-## Related Repositories
-
-- [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url) - Original repository by Jefferson Scher
-- [Mozilla Add-ons Listing](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/) - Original extension on AMO

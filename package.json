@@ -1,0 +1,32 @@
+{
+  "name": "copy-frame-or-page-url",
+  "version": "1.5.0",
+  "description": "Firefox WebExtension to copy frame or page URLs",
+  "scripts": {
+    "build": "web-ext build",
+    "lint": "web-ext lint",
+    "run": "web-ext run",
+    "run:de": "web-ext run --locale de",
+    "run:en": "web-ext run --locale en"
+  },
+  "devDependencies": {
+    "web-ext": "^7.6.0"
+  },
+  "keywords": [
+    "firefox",
+    "webextension",
+    "url",
+    "copy",
+    "clipboard"
+  ],
+  "author": "Jefferson Scher / wnpl",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wnpl/copy-frame-or-page-url.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wnpl/copy-frame-or-page-url/issues"
+  },
+  "homepage": "https://github.com/wnpl/copy-frame-or-page-url#readme"
+}

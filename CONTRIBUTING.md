@@ -64,10 +64,7 @@ web-ext run
 # Run with a specific locale for testing translations
 web-ext run --locale de
 
-# Run with Firefox Developer Edition
-web-ext run --firefox=nightly
-
-# Lint the extension for common issues
+# Lint the extension
 web-ext lint
 ```
 

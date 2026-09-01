@@ -2,6 +2,8 @@
 
 A Firefox WebExtension that lets you quickly copy URLs from frames, links, or the current page to your clipboard. Supports plain URLs, Markdown links, and HTML links.
 
+**Note:** This is a modified fork of the original extension. The original extension by Jefferson "jscher2000" Scher is available at [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url). This fork includes additional features like internationalization support and improved options.
+
 ## Features
 
 - **Copy Frame URLs**: Right-click on any frame to copy its URL to the clipboard
@@ -15,11 +17,19 @@ A Firefox WebExtension that lets you quickly copy URLs from frames, links, or th
 
 ## Installation
 
-### From AMO (Recommended)
+### From Source (Recommended for this Fork)
 
-Install from [Mozilla Add-ons](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/):
+Since this is a modified fork, there is currently no separate AMO listing. You can install it directly from source:
 
-[![Get the Add-on](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png)](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/)
+1. Clone this repository or download the source code
+2. In Firefox, go to `about:debugging`
+3. Click "This Firefox" (left sidebar)
+4. Click "Load Temporary Add-on..."
+5. Select any file in the extension directory (e.g., `manifest.json`)
+
+### Original AMO Listing
+
+The original extension is available on [Mozilla Add-ons](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/) by Jefferson "jscher2000" Scher.
 
 ### Development Version
 
@@ -174,5 +184,10 @@ This project is based on the original work by Jefferson "jscher2000" Scher, lice
 
 ## Credits
 
-- Original extension by [Jefferson "jscher2000" Scher](https://github.com/jscher2000/)
+- Original extension by [Jefferson "jscher2000" Scher](https://github.com/jscher2000/copy-frame-or-page-url)
 - Modified and maintained by [wnpl](https://github.com/wnpl/)
+
+## Related Repositories
+
+- [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url) - Original repository by Jefferson Scher
+- [Mozilla Add-ons Listing](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/) - Original extension on AMO

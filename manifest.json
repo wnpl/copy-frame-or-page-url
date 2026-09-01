@@ -1,7 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Copy Frame or Page URL (Decoded)",
-  "description": "Right-click a framed page or any link to pop its decoded URL on the clipboard. Works on regular pages, too, unless you turn that off in Options.",
+  "default_locale": "en",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
   "version": "1.4.1",
   "browser_specific_settings": {
     "gecko": {
@@ -48,7 +49,7 @@
       "48": "icons/link-48.svg",
       "64": "icons/link-64.svg"
     },
-    "default_title": "Copy Current Page URL (Shift+click for Markdown)"
+    "default_title": "__MSG_browserActionTitle__"
   },
   "page_action": {
     "browser_style": true,
@@ -58,17 +59,17 @@
       "48": "icons/link-48.svg",
       "64": "icons/link-64.svg"
     },
-    "default_title": "Copy Current Page URL (Shift+click for Markdown)"
+    "default_title": "__MSG_pageActionTitle__"
   },
   "commands": {
     "copy-page-url": {
-      "description": "Copy Current Page URL"
+      "description": "__MSG_commandCopyPageUrl__"
     },
     "copy-page-url-as-markdown": {
-      "description": "Copy Markdown of Current Page [Title](URL)"
+      "description": "__MSG_commandCopyPageUrlAsMarkdown__"
     },
     "copy-page-url-as-html": {
-      "description": "Copy HTML Link of Current Page <a href=url>Title</a>"
+      "description": "__MSG_commandCopyPageUrlAsHtml__"
     }
   }
 }

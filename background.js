@@ -225,9 +225,6 @@ function updateButtonTooltips(){
         browser.browserAction.setTitle({
             title: buttonTitle
         });
-        browser.pageAction.setTitle({
-            title: buttonTitle
-        });
     }
 }
 

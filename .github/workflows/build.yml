@@ -31,7 +31,8 @@ jobs:
         run: |
           VERSION=$(node -p "require('./manifest.json').version")
           ARTIFACT_NAME="copy-frame-or-page-url-$VERSION.xpi"
-          mv web-ext-artifacts/*.xpi "web-ext-artifacts/$ARTIFACT_NAME"
+          # web-ext creates a .zip file, rename it to .xpi
+          mv web-ext-artifacts/*.zip "web-ext-artifacts/$ARTIFACT_NAME"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

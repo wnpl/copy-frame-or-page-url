@@ -1,27 +1,24 @@
-/* 
-  Copyright 2022. Jefferson "jscher2000" Scher. License: MPL-2.0.
-  version 0.1 - initial concept
-  version 1.0 - added toolbar button and keyboard shortcut option
-  version 1.1 - added option to choose between toolbar button and address bar button
-  version 1.2 - dark mode icon
-  version 1.3 - option to decode unicode characters
-  version 1.4 - simplify icons, add HTML link format
-  [Modified 2026] Added right-click custom context menu for decoding and copying URLs.
-*/
+// Copyright 2022. Jefferson "jscher2000" Scher. License: MPL-2.0.
+// version 0.1 - initial concept
+// version 1.0 - added toolbar button and keyboard shortcut option
+// version 1.1 - added option to choose between toolbar button and address bar button
+// version 1.2 - dark mode icon
+// version 1.3 - option to decode unicode characters
+// version 1.4 - simplify icons, add HTML link format
+// [Modified 2026] Added right-click custom context menu for decoding and copying URLs.
+
+
 
 /**** Create and populate data structure ****/
 
 // Default starting values
 var oPrefs = {
-    allpages: true,         // Copy the URL of the page even if it's in the top frame
+    allpages: true,         // Copy the URL of the page even if it is in the top frame
     allpagesmenu: false,    // Current menu status
-    contexticon: false,        // Option to use context fill color for toolbar icons
-    contexticonstatus: false,    // Whether context-fill icon is in use
     clickplain: 'url',        // Plain click on browser action copies URL only
     clickshift: 'markdown',    // Shift+click on browser action copies markdown
     clickctrl: 'html',        // Shift+click on browser action copies html
     pageaction: false,        // Button in the address bar
-    darkmode: false,        // Option to use dark icon for Page Action
     decode: true            // Option to decode Unicode URLs
 }
 let pagemenu;
@@ -38,12 +35,7 @@ let getPrefs = browser.storage.local.get("prefs").then((results) => {
         }
     }
 }).then(() => {
-    if (oPrefs.contexticon == true){
-        iconpath = 'icons/link-64.svg';
-        oPrefs.contexticonstatus = true;
-        // Update toolbar icon (async)
-        browser.browserAction.setIcon({path: iconpath});
-    }
+
     if (oPrefs.allpages == true){
         pagemenu = browser.menus.create({
             id: "copy-page-url",
@@ -67,7 +59,7 @@ let framemenu = browser.menus.create({
     contexts: ["frame"]
 });
 
-// 【修改点一】注册一个专门针对超链接（link）的右键菜单
+// link
 let linkmenu = browser.menus.create({
     id: "copy-decode-url",
     title: "Copy Decode URL",
@@ -76,7 +68,7 @@ let linkmenu = browser.menus.create({
 
 browser.menus.onClicked.addListener((menuInfo, currTab) => {
     switch (menuInfo.menuItemId) {
-        // 【修改点二】追加新菜单的处理事件
+        // 
         case 'copy-decode-url':
             updateClipboard(deco(menuInfo.linkUrl));
             break;
@@ -185,21 +177,12 @@ browser.commands.onCommand.addListener((strName) => {
 
 function showPageAction(tabId){
     browser.pageAction.show(tabId);
-    if (oPrefs.darkmode == true){ // as of v1.4, same icon
-        browser.pageAction.setIcon({
+    browser.pageAction.setIcon({
             tabId: tabId,
             path: {
                 64: iconpath
             }
         });
-    } else {
-        browser.pageAction.setIcon({
-            tabId: tabId,
-            path: {
-                64: iconpath
-            }
-        });
-    }
     browser.pageAction.setTitle({
         tabId: tabId,
         title: buttonTitle
@@ -257,27 +240,11 @@ function handleMessage(request, sender, sendResponse){
         // Receive pref updates from Options page, store to oPrefs, and commit to storage
         var oSettings = request["update"];
         oPrefs.allpages = oSettings.allpages;
-        // Icon change
-        oPrefs.contexticon = oSettings.contexticon;
-        if (oPrefs.contexticon == true && oPrefs.contexticonstatus == false) {
-            iconpath = 'icons/link-64.svg';
-            oPrefs.contexticonstatus = true;
-            // Update toolbar icon (async)
-            browser.browserAction.setIcon({path: iconpath});
-            // Update menu icon (NOT POSSIBLE FOR TOP LEVEL ITEMS)
-        } else if (oPrefs.contexticon == false && oPrefs.contexticonstatus == true) {
-            iconpath = 'icons/link-64.svg';
-            oPrefs.contexticonstatus = false;
-            // Update toolbar icon (async)
-            browser.browserAction.setIcon({path: iconpath});
-            // Update menu icon (NOT POSSIBLE FOR TOP LEVEL ITEMS)
-        }
         oPrefs.clickplain = oSettings.clickplain;
         oPrefs.clickshift = oSettings.clickshift;
         oPrefs.clickctrl = oSettings.clickctrl;
         oPrefs.decode = oSettings.decode;
         // Check for Page Action changes
-        oPrefs.darkmode = oSettings.darkmode;
         if (oSettings.pageaction == true && oPrefs.pageaction == false){
             browser.tabs.onUpdated.addListener(showPageAction);
         } else if (oSettings.pageaction == false && oPrefs.pageaction == true){

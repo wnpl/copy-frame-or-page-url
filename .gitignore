@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+web-ext-artifacts/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build scripts (not needed in distribution)
+build.sh
+build-version.js
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local

@@ -4,41 +4,87 @@
 <meta charset="utf-8">
 <title data-i18n="optionsPageTitle"></title>
 <style>
+  :root {
+    --light-bg: #ffffff;
+    --light-text: #0c0c0d;
+    --light-field-bg: #ffffff;
+    --light-field-text: #0c0c0d;
+    --light-field-border: #797979;
+    --light-secondary-text: #616161;
+    --light-link-color: #0060df;
+    --light-accent: #0060df;
+
+    --dark-bg: #1e1e1e;
+    --dark-text: #ffffff;
+    --dark-field-bg: #2d2d2d;
+    --dark-field-text: #ffffff;
+    --dark-field-border: #505050;
+    --dark-secondary-text: #909090;
+    --dark-link-color: #79c0ff;
+    --dark-accent: #79c0ff;
+  }
+
   body {
     font-family: system-ui, -apple-system, sans-serif;
     font-size: inherit;
-    color: var(--theme-body-color, CanvasText);
-    background-color: var(--theme-body-background, Canvas);
+    color: var(--light-text);
+    background-color: var(--light-bg);
     margin: 0;
     padding: 16px;
     max-width: 600px;
   }
 
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: var(--dark-bg);
+      --text: var(--dark-text);
+      --field-bg: var(--dark-field-bg);
+      --field-text: var(--dark-field-text);
+      --field-border: var(--dark-field-border);
+      --secondary-text: var(--dark-secondary-text);
+      --link-color: var(--dark-link-color);
+      --accent: var(--dark-accent);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: var(--light-bg);
+      --text: var(--light-text);
+      --field-bg: var(--light-field-bg);
+      --field-text: var(--light-field-text);
+      --field-border: var(--light-field-border);
+      --secondary-text: var(--light-secondary-text);
+      --link-color: var(--light-link-color);
+      --accent: var(--light-accent);
+    }
+  }
+
   form {
-    color: var(--theme-body-color, CanvasText);
-    background-color: var(--theme-body-background, Canvas);
+    color: var(--text);
+    background-color: var(--bg);
   }
 
   p {
     margin: 1em 0;
-    color: var(--theme-body-color, CanvasText);
+    color: var(--text);
   }
 
   strong {
-    color: var(--theme-body-color, CanvasText);
+    color: var(--text);
     font-weight: bold;
   }
 
   em {
-    color: var(--theme-secondary-text, GrayText);
+    color: var(--secondary-text);
     font-style: italic;
   }
 
   label {
     font-family: inherit;
     font-size: inherit;
-    color: var(--theme-body-color, CanvasText);
-    background-color: var(--theme-body-background, Canvas);
+    color: var(--text);
+    background-color: var(--bg);
     display: block;
     margin: 0.5em 0;
     cursor: pointer;
@@ -46,21 +92,21 @@
 
   input[type="checkbox"] {
     margin-right: 8px;
-    accent-color: var(--theme-accent-color, AccentColor);
+    accent-color: var(--accent);
   }
 
   select {
     font-family: inherit;
     font-size: inherit;
-    color: var(--theme-toolbar-field-color, FieldText);
-    background-color: var(--theme-toolbar-field-background, Field);
-    border: 1px solid var(--theme-toolbar-field-border-color, ButtonBorder);
+    color: var(--field-text);
+    background-color: var(--field-bg);
+    border: 1px solid var(--field-border);
     padding: 4px 6px;
     margin: 0 4px;
   }
 
   a {
-    color: var(--theme-link-color, -moz-mac-accentdarkshadow);
+    color: var(--link-color);
     text-decoration: none;
   }
 

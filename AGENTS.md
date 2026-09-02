@@ -108,6 +108,6 @@ When using third-party assets:
 
 Current attributions:
 - Original extension: Jefferson "jscher2000" Scher
-- i18n: Hamada Masatoshi
-- Manifest V3, icons, build automation: Stefan Winopal
+- Custom context menu and decoded URL support: Hamada Masatoshi
+- Manifest V3, icons, i18n, build automation: Stefan Winopal
 - Icons: FirefoxUX/acorn-icons (MPL-2.0)

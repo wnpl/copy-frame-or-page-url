@@ -1,5 +1,4 @@
 // Copyright 2022. Jefferson "jscher2000" Scher. License: MPL-2.0.
-// Copyright 2026. Hamada Masatoshi. Modifications licensed under MPL-2.0.
 // Copyright 2026. Stefan Winopal. Modifications licensed under MPL-2.0.
 // version 0.1 - initial concept
 // version 1.0 - added toolbar button and keyboard shortcut option
@@ -7,7 +6,7 @@
 // version 1.2 - dark mode icon
 // version 1.3 - option to decode unicode characters
 // version 1.4 - simplify icons, add HTML link format
-// version 1.5 - i18n, build automation
+// version 1.5 - i18n, custom context menu for decoded URLs
 // version 1.6 - Manifest V3 (event page), rename to "Copy Link to Page"
 
 /**** Create and populate data structure ****/

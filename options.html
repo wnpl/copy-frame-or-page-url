@@ -24,17 +24,14 @@
     --dark-accent: #79c0ff;
   }
 
-  body {
-    font-family: system-ui, -apple-system, sans-serif;
-    font-size: inherit;
-    color: var(--light-text);
+  html {
     background-color: var(--light-bg);
-    margin: 0;
-    padding: 16px;
-    max-width: 600px;
   }
 
   @media (prefers-color-scheme: dark) {
+    html {
+      background-color: var(--dark-bg);
+    }
     :root {
       --bg: var(--dark-bg);
       --text: var(--dark-text);
@@ -48,6 +45,9 @@
   }
 
   @media (prefers-color-scheme: light) {
+    html {
+      background-color: var(--light-bg);
+    }
     :root {
       --bg: var(--light-bg);
       --text: var(--light-text);
@@ -58,6 +58,16 @@
       --link-color: var(--light-link-color);
       --accent: var(--light-accent);
     }
+  }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: inherit;
+    color: var(--text);
+    background-color: var(--bg);
+    margin: 0 auto;
+    padding: 16px;
+    max-width: 600px;
   }
 
   form {

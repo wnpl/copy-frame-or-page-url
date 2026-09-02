@@ -4,19 +4,19 @@
     "description": "Name der Erweiterung"
   },
   "extensionDescription": {
-    "message": "Rechtsklick auf eine eingebettete Seite oder einen Link, um die dekodierte URL in die Zwischenablage zu kopieren. Funktioniert auch auf normalen Seiten, außer Sie deaktivieren dies in den Optionen.",
+    "message": "Rechtsklick auf eine eingebettete Seite oder einen Link, um den dekodierten Link in die Zwischenablage zu kopieren. Funktioniert auch auf normalen Seiten, außer Sie deaktivieren dies in den Optionen.",
     "description": "Beschreibung der Erweiterung"
   },
   "browserActionTitle": {
-    "message": "Aktuelle Seiten-URL kopieren (Umschalt+Klick für Markdown)",
+    "message": "Aktuellen Seiten-Link kopieren (Umschalt+Klick für Markdown)",
     "description": "Tooltip für die Browser-Action-Schaltfläche"
   },
   "pageActionTitle": {
-    "message": "Aktuelle Seiten-URL kopieren (Umschalt+Klick für Markdown)",
+    "message": "Aktuellen Seiten-Link kopieren (Umschalt+Klick für Markdown)",
     "description": "Tooltip für die Page-Action-Schaltfläche"
   },
   "commandCopyPageUrl": {
-    "message": "Aktuelle Seiten-URL kopieren",
+    "message": "Aktuellen Seiten-Link kopieren",
     "description": "Beschreibung des Tastaturkürzels zum Kopieren der Seiten-URL"
   },
   "commandCopyPageUrlAsMarkdown": {
@@ -28,19 +28,19 @@
     "description": "Beschreibung des Tastaturkürzels für HTML-Format"
   },
   "optionsPageTitle": {
-    "message": "Optionen für Frame- oder Seiten-URL kopieren",
+    "message": "Optionen für Seiten-Link kopieren",
     "description": "Titel der Optionsseite"
   },
   "menuCopyPageUrl": {
-    "message": "Seiten-URL kopieren",
+    "message": "Seiten-Link kopieren",
     "description": "Kontextmenü-Eintrag zum Kopieren der Seiten-URL"
   },
   "menuCopyFrameUrl": {
-    "message": "Frame-URL kopieren",
+    "message": "Frame-Link kopieren",
     "description": "Kontextmenü-Eintrag zum Kopieren der Frame-URL"
   },
   "menuCopyDecodeUrl": {
-    "message": "Dekodierte URL kopieren",
+    "message": "Dekodierten Link kopieren",
     "description": "Kontextmenü-Eintrag zum Kopieren einer dekodierten Link-URL"
   },
   "optionAllPages": {
@@ -52,11 +52,11 @@
     "description": "Option zum Anzeigen der Page-Action-Schaltfläche"
   },
   "optionDecodeUnicode": {
-    "message": "Unicode-Zeichen in der URL dekodieren (z. B. 茶 statt %E8%8C%B6)",
+    "message": "Unicode-Zeichen im Link dekodieren (z. B. 茶 statt %E8%8C%B6)",
     "description": "Option zum Dekodieren von Unicode in URLs"
   },
   "formatUrl": {
-    "message": "Nur reine URL",
+    "message": "Nur reiner Link",
     "description": "Option für das reine URL-Format"
   },
   "formatMarkdown": {
@@ -80,7 +80,7 @@
     "description": "Beschriftung für die Aktion bei Strg+Klick (Cmd+Klick auf Mac)"
   },
   "noteFrameUrlLimitation": {
-    "message": "Hinweis: Das Kopieren einer Frame-URL ist auf die reine URL beschränkt.",
+    "message": "Hinweis: Das Kopieren eines Frame-Links ist auf den reinen Link beschränkt.",
     "description": "Hinweis zu den Einschränkungen bei Frame-URLs"
   },
   "sectionPageActionButton": {
@@ -104,15 +104,15 @@
     "description": "Anleitung zum Verwalten von Tastaturkürzeln"
   },
   "tooltipCopyUrl": {
-    "message": "Aktuelle Seiten-URL kopieren",
+    "message": "Aktuellen Seiten-Link kopieren",
     "description": "Tooltip zum Kopieren der URL (rein)"
   },
   "tooltipCopyMarkdown": {
-    "message": "Titel+URL als Markdown kopieren",
+    "message": "Titel+Link als Markdown kopieren",
     "description": "Tooltip zum Kopieren als Markdown"
   },
   "tooltipCopyHtml": {
-    "message": "Titel+URL als HTML-Link kopieren",
+    "message": "Titel+Link als HTML-Link kopieren",
     "description": "Tooltip zum Kopieren als HTML"
   },
   "errorClipboardWrite": {

@@ -12,10 +12,10 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.1.0
+        uses: actions/setup-node@v4.2.0
         with:
           node-version: '24'
 
@@ -46,7 +46,7 @@ jobs:
           echo "ARTIFACT_PATH=artifacts/$ARTIFACT_NAME" >> $GITHUB_ENV
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2.0.8
+        uses: softprops/action-gh-release@v2.2.0
         with:
           files: ${{ env.ARTIFACT_PATH }}
           generate_release_notes: true

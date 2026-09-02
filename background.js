@@ -1,4 +1,6 @@
 // Copyright 2022. Jefferson "jscher2000" Scher. License: MPL-2.0.
+// Copyright 2024. Hamada Masatoshi. Modifications licensed under MPL-2.0.
+// Copyright 2026. Stefan Winopal. Modifications licensed under MPL-2.0.
 // version 0.1 - initial concept
 // version 1.0 - added toolbar button and keyboard shortcut option
 // version 1.1 - added option to choose between toolbar button and address bar button

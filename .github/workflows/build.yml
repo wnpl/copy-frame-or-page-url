@@ -36,12 +36,26 @@ jobs:
           # Create artifacts directory
           mkdir -p artifacts
           
-          # Build with web-ext
+          # Build with web-ext (creates .zip by default)
           web-ext build --overwrite-dest
+          
+          # Find the built file (could be .zip or .xpi)
+          BUILT_FILE=$(find web-ext-artifacts -type f \( -name "*.xpi" -o -name "*.zip" \) | head -n 1)
+          
+          if [ -z "$BUILT_FILE" ]; then
+            echo "Error: No build artifact found"
+            exit 1
+          fi
           
           # Rename artifact
           ARTIFACT_NAME="copy-link-to-page-$VERSION.xpi"
-          mv web-ext-artifacts/*.xpi "artifacts/$ARTIFACT_NAME"
+          
+          # If it's a zip, rename to .xpi
+          if [[ "$BUILT_FILE" == *.zip ]]; then
+            mv "$BUILT_FILE" "artifacts/$ARTIFACT_NAME"
+          else
+            mv "$BUILT_FILE" "artifacts/$ARTIFACT_NAME"
+          fi
           
           echo "ARTIFACT_PATH=artifacts/$ARTIFACT_NAME" >> $GITHUB_ENV
 

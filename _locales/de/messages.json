@@ -20,7 +20,7 @@
     "description": "Beschreibung des Tastaturkürzels zum Kopieren der Seiten-URL"
   },
   "commandCopyPageUrlAsMarkdown": {
-    "message": "Markdown der aktuellen Seite [Titel](URL) kopieren",
+    "message": "Markdown der aktuellen Seite [Titel](url) kopieren",
     "description": "Beschreibung des Tastaturkürzels für Markdown-Format"
   },
   "commandCopyPageUrlAsHtml": {

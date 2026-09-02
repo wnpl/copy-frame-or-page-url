@@ -4,43 +4,43 @@
     "description": "Name of the extension"
   },
   "extensionDescription": {
-    "message": "Right-click a framed page or any link to pop its decoded link on the clipboard. Works on regular pages, too, unless you turn that off in Options.",
+    "message": "Right-click a framed page or any link to copy its decoded link to the clipboard. Works on regular pages, too, unless you turn that off in Options.",
     "description": "Description of the extension"
   },
   "browserActionTitle": {
-    "message": "Copy Current Page Link (Shift+click for Markdown)",
+    "message": "Copy current page link (Shift+click for Markdown)",
     "description": "Tooltip for the browser action button"
   },
   "pageActionTitle": {
-    "message": "Copy Current Page Link (Shift+click for Markdown)",
+    "message": "Copy current page link (Shift+click for Markdown)",
     "description": "Tooltip for the page action button"
   },
   "commandCopyPageUrl": {
-    "message": "Copy Current Page Link",
+    "message": "Copy current page link",
     "description": "Keyboard shortcut command description"
   },
   "commandCopyPageUrlAsMarkdown": {
-    "message": "Copy Markdown of Current Page [Title](URL)",
+    "message": "Copy markdown of current page [title](url)",
     "description": "Keyboard shortcut command description for markdown format"
   },
   "commandCopyPageUrlAsHtml": {
-    "message": "Copy HTML Link of Current Page <a href=url>Title</a>",
+    "message": "Copy HTML link of current page <a href=url>title</a>",
     "description": "Keyboard shortcut command description for HTML format"
   },
   "optionsPageTitle": {
-    "message": "Options for Copy Link to Page",
+    "message": "Options for Copy link to page",
     "description": "Title of the options page"
   },
   "menuCopyPageUrl": {
-    "message": "Copy Page Link",
+    "message": "Copy page link",
     "description": "Context menu item for copying the page URL"
   },
   "menuCopyFrameUrl": {
-    "message": "Copy Framed Page Link",
+    "message": "Copy framed page link",
     "description": "Context menu item for copying a framed page URL"
   },
   "menuCopyDecodeUrl": {
-    "message": "Copy Decoded Link",
+    "message": "Copy decoded link",
     "description": "Context menu item for copying a decoded link URL"
   },
   "optionAllPages": {
@@ -92,7 +92,7 @@
     "description": "Section header for modifier key actions"
   },
   "sectionMiscellaneous": {
-    "message": "Miscellaneous Options",
+    "message": "Miscellaneous options",
     "description": "Section header for miscellaneous options"
   },
   "sectionKeyboardShortcut": {
@@ -100,19 +100,19 @@
     "description": "Section header for keyboard shortcut info"
   },
   "linkManageShortcuts": {
-    "message": "Click the gear button on the Add-ons page, then \"Manage Extension Shortcuts\" (see:",
+    "message": "Click the gear button on the Add-ons page, then \"Manage extension shortcuts\" (see:",
     "description": "Instructions for managing keyboard shortcuts"
   },
   "tooltipCopyUrl": {
-    "message": "Copy Current Page Link",
+    "message": "Copy current page link",
     "description": "Tooltip for copying URL (plain)"
   },
   "tooltipCopyMarkdown": {
-    "message": "Copy Title+Link as Markdown",
+    "message": "Copy title+link as markdown",
     "description": "Tooltip for copying as markdown"
   },
   "tooltipCopyHtml": {
-    "message": "Copy Title+Link as HTML Link",
+    "message": "Copy title+link as HTML link",
     "description": "Tooltip for copying as HTML"
   },
   "errorClipboardWrite": {

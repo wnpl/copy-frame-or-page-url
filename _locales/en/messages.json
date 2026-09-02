@@ -101,13 +101,7 @@
   },
   "linkManageShortcuts": {
     "message": "Click the gear button on the Add-ons page, then \"Manage Extension Shortcuts\" (see: $link$)",
-    "description": "Instructions for managing keyboard shortcuts",
-    "placeholders": {
-      "link": {
-        "content": "$1",
-        "example": "https://support.mozilla.org/kb/manage-extension-shortcuts-firefox"
-      }
-    }
+    "description": "Instructions for managing keyboard shortcuts"
   },
   "linkManageShortcutsUrl": {
     "message": "https://support.mozilla.org/kb/manage-extension-shortcuts-firefox",

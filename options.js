@@ -14,10 +14,10 @@ browser.runtime.sendMessage({
 		if (key) {
 			const message = browser.i18n.getMessage(key);
 			// Handle elements with placeholders (like linkManageShortcuts)
-			if (message.includes('$1$') || message.includes('$link$')) {
-				const urlKey = key + 'Url';
+			if (message.includes('$link$')) {
+				const urlKey = 'linkManageShortcutsUrl';
 				const url = browser.i18n.getMessage(urlKey);
-				el.innerHTML = message.replace(/\$1\$|\$link\$/g, `<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
+				el.innerHTML = message.replace(/\$link\$/g, `<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
 			} else {
 				el.textContent = message;
 			}

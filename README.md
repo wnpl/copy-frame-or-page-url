@@ -2,7 +2,7 @@
 
 A Firefox WebExtension that lets you quickly copy URLs from frames, links, or the current page to your clipboard. Supports plain URLs, Markdown links, and HTML links.
 
-**Note:** This is a modified fork of the original extension. The original extension by Jefferson "jscher2000" Scher is available at [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url). It was further modified by [Hamada Masatoshi](https://github.com/HamadaMasatoshi/copy-frame-or-page-url) (i18n, build automation) before being adapted by [Stefan Winopal](https://github.com/wnpl) (Manifest V3, icon refresh, dark mode styling). This fork includes additional features like internationalization support, automatic theme switching, and improved options.
+**Note:** This is a modified fork of the original extension. The original extension by Jefferson "jscher2000" Scher is available at [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url). It was further modified by [Hamada Masatoshi](https://github.com/HamadaMasatoshi/copy-frame-or-page-url) (i18n) before being adapted by [Stefan Winopal](https://github.com/wnpl) (Manifest V3, icon refresh, dark mode styling, build automation). This fork includes additional features like internationalization support, automatic theme switching, and improved options.
 
 ## Features
 
@@ -176,6 +176,6 @@ This project is based on the original work by Jefferson "jscher2000" Scher, lice
 ## Credits
 
 - Original extension by [Jefferson "jscher2000" Scher](https://github.com/jscher2000/copy-frame-or-page-url)
-- Fork with i18n and build automation by [Hamada Masatoshi](https://github.com/HamadaMasatoshi/copy-frame-or-page-url)
+- Fork with i18n by [Hamada Masatoshi](https://github.com/HamadaMasatoshi/copy-frame-or-page-url)
 - Manifest V3 migration, icon refresh, and dark mode styling by [Stefan Winopal](https://github.com/wnpl)
 - Icons from [FirefoxUX/acorn-icons](https://github.com/FirefoxUX/acorn-icons) (MPL-2.0)

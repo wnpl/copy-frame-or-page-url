@@ -100,7 +100,7 @@
     "description": "Abschnittsüberschrift für Tastaturkürzel-Info"
   },
   "linkManageShortcuts": {
-    "message": "Klicken Sie auf das Zahnrad-Symbol auf der Add-ons-Seite, dann \"Tastaturkürzel für Erweiterungen verwalten\" (siehe: $link$)",
+    "message": "Klicken Sie auf das Zahnrad-Symbol auf der Add-ons-Seite, dann \"Tastaturkürzel für Erweiterungen verwalten\" (siehe:",
     "description": "Anleitung zum Verwalten von Tastaturkürzeln"
   },
   "tooltipCopyUrl": {
@@ -125,8 +125,8 @@
       }
     }
   },
-  "linkManageShortcutsUrl": {
-    "message": "https://support.mozilla.org/de/kb/tastaturkuerzel-fuer-erweiterungen-verwalten",
-    "description": "URL zum Verwalten von Tastaturkürzeln"
+  "linkManageShortcutsLinkText": {
+    "message": "Tastaturkürzel für Erweiterungen in Firefox verwalten",
+    "description": "Linktext zum Verwalten von Tastaturkürzeln"
   }
 }

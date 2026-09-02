@@ -1,6 +1,6 @@
 {
   "name": "copy-frame-or-page-url",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Firefox WebExtension to copy frame or page URLs",
   "scripts": {
     "build": "web-ext build",

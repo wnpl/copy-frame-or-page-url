@@ -178,3 +178,4 @@ This project is based on the original work by Jefferson "jscher2000" Scher, lice
 - Original extension by [Jefferson "jscher2000" Scher](https://github.com/jscher2000/copy-frame-or-page-url)
 - Fork with i18n and build automation by [Hamada Masatoshi](https://github.com/HamadaMasatoshi/copy-frame-or-page-url)
 - Manifest V3 migration, icon refresh, and dark mode styling by [Stefan Winopal](https://github.com/wnpl)
+- Icons from [FirefoxUX/acorn-icons](https://github.com/FirefoxUX/acorn-icons) (MPL-2.0)

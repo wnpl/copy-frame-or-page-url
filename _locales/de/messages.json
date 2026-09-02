@@ -77,7 +77,7 @@
   },
   "labelClickCtrl": {
     "message": "Strg+Klick:",
-    "description": "Beschriftung für die Aktion bei Strg+Klick (Cmd+Klick auf Mac)"
+    "description": "Beschriftung für die Aktion bei Strg+Klick"
   },
   "noteFrameUrlLimitation": {
     "message": "Hinweis: Das Kopieren eines Frame-Links ist auf den reinen Link beschränkt.",
@@ -129,8 +129,8 @@
     "message": "Tastaturkürzel für Erweiterungen in Firefox verwalten",
     "description": "Linktext zum Verwalten von Tastaturkürzeln"
   },
-  "noteMacCtrl": {
-    "message": "(auf Mac: Cmd+Klick)",
-    "description": "Hinweis zur Strg-Taste auf Mac"
+  "labelClickCtrlMac": {
+    "message": "Cmd+Klick:",
+    "description": "Beschriftung für die Aktion bei Cmd+Klick auf Mac"
   }
 }

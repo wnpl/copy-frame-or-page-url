@@ -77,7 +77,7 @@
   },
   "labelClickCtrl": {
     "message": "Ctrl+click:",
-    "description": "Label for Ctrl+click action (Command+click on Mac)"
+    "description": "Label for Ctrl+click action"
   },
   "noteFrameUrlLimitation": {
     "message": "Note: Copying a frame link is limited to the plain link.",
@@ -129,8 +129,8 @@
     "message": "Manage extension shortcuts in Firefox",
     "description": "Link text for managing extension shortcuts"
   },
-  "noteMacCtrl": {
-    "message": "(on Mac, Command+click)",
-    "description": "Note about Ctrl key on Mac"
+  "labelClickCtrlMac": {
+    "message": "Cmd+click:",
+    "description": "Label for Cmd+click action on Mac"
   }
 }

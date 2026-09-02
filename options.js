@@ -42,13 +42,13 @@ browser.runtime.sendMessage({
 		}
 	}
 
-	// Show Mac-specific note only on Mac
+	// Use platform-specific modifier key label
 	browser.runtime.getPlatformInfo().then((platform) => {
-		if (platform.os === "mac") {
-			var ctrlLabel = document.getElementById('ctrl-label');
-			if (ctrlLabel) {
-				ctrlLabel.textContent = browser.i18n.getMessage("noteMacCtrl");
-			}
+		var ctrlLabel = document.getElementById('ctrl-label');
+		if (ctrlLabel) {
+			ctrlLabel.textContent = browser.i18n.getMessage(
+				platform.os === "mac" ? "labelClickCtrlMac" : "labelClickCtrl"
+			);
 		}
 	}).catch((err) => {
 		console.log('Problem getting platform info: '+err.message);

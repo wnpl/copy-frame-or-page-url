@@ -6,7 +6,7 @@
   "version": "1.6.0",
   "browser_specific_settings": {
     "gecko": {
-      "id": "copy-frame-url-decoded@your-custom-alias.com",
+      "id": "copy-link-to-page@wnpl.de",
       "strict_min_version": "142.0",
       "data_collection_permissions": {
         "required": [

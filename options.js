@@ -12,7 +12,15 @@ browser.runtime.sendMessage({
 	i18nElements.forEach(el => {
 		const key = el.getAttribute('data-i18n');
 		if (key) {
-			el.textContent = browser.i18n.getMessage(key);
+			const message = browser.i18n.getMessage(key);
+			// Handle elements with placeholders (like linkManageShortcuts)
+			if (message.includes('$1$') || message.includes('$link$')) {
+				const urlKey = key + 'Url';
+				const url = browser.i18n.getMessage(urlKey);
+				el.innerHTML = message.replace(/\$1\$|\$link\$/g, `<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
+			} else {
+				el.textContent = message;
+			}
 		}
 	});
 	

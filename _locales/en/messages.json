@@ -100,8 +100,18 @@
     "description": "Section header for keyboard shortcut info"
   },
   "linkManageShortcuts": {
-    "message": "Click the gear button on the Add-ons page, then \"Manage Extension Shortcuts\" (see: <a href=\"https://support.mozilla.org/kb/manage-extension-shortcuts-firefox\">Manage extension shortcuts in Firefox</a>)",
-    "description": "Instructions for managing keyboard shortcuts"
+    "message": "Click the gear button on the Add-ons page, then \"Manage Extension Shortcuts\" (see: $link$)",
+    "description": "Instructions for managing keyboard shortcuts",
+    "placeholders": {
+      "link": {
+        "content": "$1",
+        "example": "https://support.mozilla.org/kb/manage-extension-shortcuts-firefox"
+      }
+    }
+  },
+  "linkManageShortcutsUrl": {
+    "message": "https://support.mozilla.org/kb/manage-extension-shortcuts-firefox",
+    "description": "URL for managing extension shortcuts"
   },
   "tooltipCopyUrl": {
     "message": "Copy Current Page URL",

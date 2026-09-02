@@ -7,38 +7,38 @@
   body {
     font-family: system-ui, -apple-system, sans-serif;
     font-size: inherit;
-    color: CanvasText;
-    background-color: Canvas;
+    color: var(--theme-body-color, CanvasText);
+    background-color: var(--theme-body-background, Canvas);
     margin: 0;
     padding: 16px;
     max-width: 600px;
   }
 
   form {
-    color: CanvasText;
-    background-color: Canvas;
+    color: var(--theme-body-color, CanvasText);
+    background-color: var(--theme-body-background, Canvas);
   }
 
   p {
     margin: 1em 0;
-    color: CanvasText;
+    color: var(--theme-body-color, CanvasText);
   }
 
   strong {
-    color: CanvasText;
+    color: var(--theme-body-color, CanvasText);
     font-weight: bold;
   }
 
   em {
-    color: GrayText;
+    color: var(--theme-secondary-text, GrayText);
     font-style: italic;
   }
 
   label {
     font-family: inherit;
     font-size: inherit;
-    color: CanvasText;
-    background-color: Canvas;
+    color: var(--theme-body-color, CanvasText);
+    background-color: var(--theme-body-background, Canvas);
     display: block;
     margin: 0.5em 0;
     cursor: pointer;
@@ -46,17 +46,26 @@
 
   input[type="checkbox"] {
     margin-right: 8px;
-    accent-color: AccentColor;
+    accent-color: var(--theme-accent-color, AccentColor);
   }
 
   select {
     font-family: inherit;
     font-size: inherit;
-    color: FieldText;
-    background-color: Field;
-    border: 1px solid ButtonBorder;
+    color: var(--theme-toolbar-field-color, FieldText);
+    background-color: var(--theme-toolbar-field-background, Field);
+    border: 1px solid var(--theme-toolbar-field-border-color, ButtonBorder);
     padding: 4px 6px;
     margin: 0 4px;
+  }
+
+  a {
+    color: var(--theme-link-color, -moz-mac-accentdarkshadow);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 
   .chk {

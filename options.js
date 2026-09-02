@@ -41,6 +41,18 @@ browser.runtime.sendMessage({
 			selopt.setAttribute('selected', 'selected');
 		}
 	}
+
+	// Show Mac-specific note only on Mac
+	browser.runtime.getPlatformInfo().then((platform) => {
+		if (platform.os === "mac") {
+			var ctrlLabel = document.getElementById('ctrl-label');
+			if (ctrlLabel) {
+				ctrlLabel.textContent = browser.i18n.getMessage("noteMacCtrl");
+			}
+		}
+	}).catch((err) => {
+		console.log('Problem getting platform info: '+err.message);
+	});
 }).catch((err) => {
 	console.log('Problem getting settings: '+err.message);
 });

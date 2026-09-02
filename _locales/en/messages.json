@@ -128,5 +128,9 @@
   "linkManageShortcutsLinkText": {
     "message": "Manage extension shortcuts in Firefox",
     "description": "Link text for managing extension shortcuts"
+  },
+  "noteMacCtrl": {
+    "message": "(on Mac, Command+click)",
+    "description": "Note about Ctrl key on Mac"
   }
 }

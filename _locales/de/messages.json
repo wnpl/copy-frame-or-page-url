@@ -128,5 +128,9 @@
   "linkManageShortcutsLinkText": {
     "message": "Tastaturkürzel für Erweiterungen in Firefox verwalten",
     "description": "Linktext zum Verwalten von Tastaturkürzeln"
+  },
+  "noteMacCtrl": {
+    "message": "(auf Mac: Cmd+Klick)",
+    "description": "Hinweis zur Strg-Taste auf Mac"
   }
 }

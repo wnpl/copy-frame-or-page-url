@@ -41,6 +41,18 @@ browser.runtime.sendMessage({
 			selopt.setAttribute('selected', 'selected');
 		}
 	}
+
+	// Use platform-specific modifier key label
+	browser.runtime.getPlatformInfo().then((platform) => {
+		var ctrlLabel = document.getElementById('ctrl-label');
+		if (ctrlLabel) {
+			ctrlLabel.textContent = browser.i18n.getMessage(
+				platform.os === "mac" ? "labelClickCtrlMac" : "labelClickCtrl"
+			);
+		}
+	}).catch((err) => {
+		console.log('Problem getting platform info: '+err.message);
+	});
 }).catch((err) => {
 	console.log('Problem getting settings: '+err.message);
 });

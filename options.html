@@ -3,6 +3,136 @@
 <head>
 <meta charset="utf-8">
 <title data-i18n="optionsPageTitle"></title>
+<style>
+  :root {
+    --light-bg: #ffffff;
+    --light-text: #0c0c0d;
+    --light-field-bg: #ffffff;
+    --light-field-text: #0c0c0d;
+    --light-field-border: #797979;
+    --light-secondary-text: #616161;
+    --light-link-color: #0060df;
+    --light-accent: #0060df;
+
+    --dark-bg: #1e1e1e;
+    --dark-text: #ffffff;
+    --dark-field-bg: #2d2d2d;
+    --dark-field-text: #ffffff;
+    --dark-field-border: #505050;
+    --dark-secondary-text: #909090;
+    --dark-link-color: #79c0ff;
+    --dark-accent: #79c0ff;
+  }
+
+  html {
+    background-color: var(--light-bg);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      background-color: var(--dark-bg);
+    }
+    :root {
+      --bg: var(--dark-bg);
+      --text: var(--dark-text);
+      --field-bg: var(--dark-field-bg);
+      --field-text: var(--dark-field-text);
+      --field-border: var(--dark-field-border);
+      --secondary-text: var(--dark-secondary-text);
+      --link-color: var(--dark-link-color);
+      --accent: var(--dark-accent);
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    html {
+      background-color: var(--light-bg);
+    }
+    :root {
+      --bg: var(--light-bg);
+      --text: var(--light-text);
+      --field-bg: var(--light-field-bg);
+      --field-text: var(--light-field-text);
+      --field-border: var(--light-field-border);
+      --secondary-text: var(--light-secondary-text);
+      --link-color: var(--light-link-color);
+      --accent: var(--light-accent);
+    }
+  }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: inherit;
+    color: var(--text);
+    background-color: var(--bg);
+    margin: 0 auto;
+    padding: 16px;
+    max-width: 600px;
+  }
+
+  form {
+    color: var(--text);
+    background-color: var(--bg);
+  }
+
+  p {
+    margin: 1em 0;
+    color: var(--text);
+  }
+
+  strong {
+    color: var(--text);
+    font-weight: bold;
+  }
+
+  em {
+    color: var(--secondary-text);
+    font-style: italic;
+  }
+
+  label {
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--text);
+    background-color: var(--bg);
+    display: block;
+    margin: 0.5em 0;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--accent);
+  }
+
+  select {
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--field-text);
+    background-color: var(--field-bg);
+    border: 1px solid var(--field-border);
+    padding: 4px 6px;
+    margin: 0 4px;
+  }
+
+  a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .chk {
+    margin: 0.5em 0;
+  }
+
+  .chk label {
+    display: inline;
+    margin: 0;
+  }
+</style>
 </head>
 <body>
 <form>
@@ -29,13 +159,13 @@
 </select>
 </label><br>
 
-<label><span data-i18n="labelClickCtrl"></span> 
+<label><span id="ctrl-label"></span> 
 <select name="clickctrl">
     <option value="url" data-i18n="formatUrl"></option>
     <option value="markdown" data-i18n="formatMarkdown"></option>
     <option value="html" data-i18n="formatHtml"></option>
 </select>
-</label> (on Mac, Command+click)<br><br>
+</label><br><br>
 <em data-i18n="noteFrameUrlLimitation"></em>
 </p>
 
@@ -43,7 +173,7 @@
 <p class="chk"><label><input type="checkbox" name="decode"> <span data-i18n="optionDecodeUnicode"></span></label>
 
 <p><strong data-i18n="sectionKeyboardShortcut"></strong></p>
-<p data-i18n="linkManageShortcuts"></p>
+<p data-i18n="linkManageShortcuts"></p> <a href="https://support.mozilla.org/kb/manage-extension-shortcuts-firefox" target="_blank" rel="noopener" data-i18n="linkManageShortcutsLinkText"></a>
 
 <script src="options.js"></script>
 </body>

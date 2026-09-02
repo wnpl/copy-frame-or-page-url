@@ -1,12 +1,12 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "default_locale": "en",
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "browser_specific_settings": {
     "gecko": {
-      "id": "copy-frame-url-decoded@your-custom-alias.com",
+      "id": "copy-link-to-page@wnpl.de",
       "strict_min_version": "142.0",
       "data_collection_permissions": {
         "required": [
@@ -16,8 +16,8 @@
     }
   },
   "developer": {
-    "name": "Jefferson \"jscher2000\" Scher / Mod by Self",
-    "url": "https://github.com/jscher2000/"
+    "name": "Stefan Winopal",
+    "url": "https://github.com/wnpl"
   },
   "background": {
     "scripts": [
@@ -38,11 +38,9 @@
     "128": "icons/link-64.svg"
   },
   "options_ui": {
-    "page": "options.html",
-    "browser_style": true
+    "page": "options.html"
   },
-  "browser_action": {
-    "browser_style": true,
+  "action": {
     "default_icon": {
       "16": "icons/link-16.svg",
       "32": "icons/link-32.svg",
@@ -52,7 +50,6 @@
     "default_title": "__MSG_browserActionTitle__"
   },
   "page_action": {
-    "browser_style": true,
     "default_icon": {
       "16": "icons/link-16.svg",
       "32": "icons/link-32.svg",

@@ -1,13 +1,14 @@
 // Copyright 2022. Jefferson "jscher2000" Scher. License: MPL-2.0.
+// Copyright 2026. Hamada Masatoshi. Modifications licensed under MPL-2.0.
+// Copyright 2026. Stefan Winopal. Modifications licensed under MPL-2.0.
 // version 0.1 - initial concept
 // version 1.0 - added toolbar button and keyboard shortcut option
 // version 1.1 - added option to choose between toolbar button and address bar button
 // version 1.2 - dark mode icon
 // version 1.3 - option to decode unicode characters
 // version 1.4 - simplify icons, add HTML link format
-// [Modified 2026] Added right-click custom context menu for decoding and copying URLs.
-
-
+// version 1.5 - i18n, build automation
+// version 1.6 - Manifest V3 (event page), rename to "Copy Link to Page"
 
 /**** Create and populate data structure ****/
 
@@ -25,16 +26,25 @@ let pagemenu;
 let iconpath = 'icons/link-64.svg'; // default path, potentially updated later
 
 // Update oPrefs from storage
-let getPrefs = browser.storage.local.get("prefs").then((results) => {
-    if (results.prefs != undefined){
-        if (JSON.stringify(results.prefs) != '{}'){
-            var arrSavedPrefs = Object.keys(results.prefs)
-            for (var j=0; j<arrSavedPrefs.length; j++){
-                oPrefs[arrSavedPrefs[j]] = results.prefs[arrSavedPrefs[j]];
+async function loadPrefs(){
+    try {
+        const results = await browser.storage.local.get("prefs");
+        if (results.prefs != undefined){
+            if (JSON.stringify(results.prefs) != '{}'){
+                var arrSavedPrefs = Object.keys(results.prefs)
+                for (var j=0; j<arrSavedPrefs.length; j++){
+                    oPrefs[arrSavedPrefs[j]] = results.prefs[arrSavedPrefs[j]];
+                }
             }
         }
+    } catch(err){
+        console.log('Error retrieving "prefs" from storage: '+err.message);
     }
-}).then(() => {
+}
+
+// Initialize menus and listeners after prefs are loaded
+async function init(){
+    await loadPrefs();
 
     if (oPrefs.allpages == true){
         pagemenu = browser.menus.create({
@@ -49,9 +59,9 @@ let getPrefs = browser.storage.local.get("prefs").then((results) => {
         browser.tabs.onUpdated.addListener(showPageAction);
     }
     updateButtonTooltips();
-}).catch((err) => {console.log('Error retrieving "prefs" from storage: '+err.message);});
+}
 
-/**** Context menu item ****/
+/**** Context menu items ****/
 
 let framemenu = browser.menus.create({
     id: "copy-frame-url",
@@ -59,7 +69,6 @@ let framemenu = browser.menus.create({
     contexts: ["frame"]
 });
 
-// link
 let linkmenu = browser.menus.create({
     id: "copy-decode-url",
     title: browser.i18n.getMessage("menuCopyDecodeUrl"),
@@ -68,7 +77,6 @@ let linkmenu = browser.menus.create({
 
 browser.menus.onClicked.addListener((menuInfo, currTab) => {
     switch (menuInfo.menuItemId) {
-        // 
         case 'copy-decode-url':
             updateClipboard(deco(menuInfo.linkUrl));
             break;
@@ -104,7 +112,7 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
 function updateClipboard(txt){
     // Copy to clipboard
     navigator.clipboard.writeText(txt).catch((err) => {
-        window.alert(browser.i18n.getMessage("errorClipboardWrite", err.message));
+        console.log(browser.i18n.getMessage("errorClipboardWrite", err.message));
     });
 }
 
@@ -123,7 +131,8 @@ function deco(urltxt){ // version 1.3
 
 /**** Toolbar button and keyboard shortcut ****/
 
-browser.browserAction.onClicked.addListener((tab, clickData) => {
+// MV3: browser_action -> action
+browser.action.onClicked.addListener((tab, clickData) => {
     // Check for Shift or Ctrl as modifier
     var style = oPrefs.clickplain;
     if (clickData && clickData.modifiers){
@@ -222,7 +231,8 @@ function updateButtonTooltips(){
         buttonTitle = browser.i18n.getMessage("tooltipCopyHtml");
     }
     if (buttonTitle.length > 0){
-        browser.browserAction.setTitle({
+        // MV3: browserAction -> action
+        browser.action.setTitle({
             title: buttonTitle
         });
     }
@@ -273,3 +283,6 @@ function handleMessage(request, sender, sendResponse){
     }
 }
 browser.runtime.onMessage.addListener(handleMessage);
+
+/**** Initialize (MV3 event page) ****/
+init();

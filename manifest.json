@@ -38,11 +38,9 @@
     "128": "icons/link-64.svg"
   },
   "options_ui": {
-    "page": "options.html",
-    "browser_style": true
+    "page": "options.html"
   },
   "action": {
-    "browser_style": true,
     "default_icon": {
       "16": "icons/link-16.svg",
       "32": "icons/link-32.svg",
@@ -52,7 +50,6 @@
     "default_title": "__MSG_browserActionTitle__"
   },
   "page_action": {
-    "browser_style": true,
     "default_icon": {
       "16": "icons/link-16.svg",
       "32": "icons/link-32.svg",

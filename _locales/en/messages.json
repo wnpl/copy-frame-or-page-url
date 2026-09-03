@@ -165,10 +165,6 @@
     "message": "Clean links (remove tracking parameters)",
     "description": "Option to clean URLs before copying"
   },
-  "optionAmazonId": {
-    "message": "Amazon affiliate ID (e.g., myid-21)",
-    "description": "Amazon affiliate tracking ID to add to cleaned Amazon links"
-  },
   "menuCopyCleanPageUrl": {
     "message": "Copy clean page link",
     "description": "Context menu item for copying the cleaned page URL"

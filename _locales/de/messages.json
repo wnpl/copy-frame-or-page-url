@@ -165,10 +165,6 @@
     "message": "Links vor dem Kopieren säubern (Tracking-Parameter entfernen)",
     "description": "Option zum Säubern von URLs vor dem Kopieren"
   },
-  "optionAmazonId": {
-    "message": "Amazon Partner-ID (z. B. meinedomain-21)",
-    "description": "Amazon Partner-ID, die zu gereinigten Amazon-Links hinzugefügt wird"
-  },
   "menuCopyCleanPageUrl": {
     "message": "Sauberen Seiten-Link kopieren",
     "description": "Kontextmenü-Eintrag zum Kopieren der gereinigten Seiten-URL"

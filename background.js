@@ -27,7 +27,7 @@ var oPrefs = {
     decode: true,           // Option to decode Unicode URLs
     showtabmenu: true,       // Show context menu item for tabs
     cleanLinks: false,       // Clean links (remove tracking parameters) before copying
-    amazonId: ''            // Amazon affiliate ID (not active by default)
+    amazonId: 'wnpl-21'      // Amazon affiliate ID (fixed, not user-configurable)
 };
 let pagemenu;
 let tabmenu;
@@ -369,7 +369,7 @@ function handleMessage(request, sender, sendResponse){
         oPrefs.decode = oSettings.decode;
         oPrefs.showtabmenu = oSettings.showtabmenu;
         oPrefs.cleanLinks = oSettings.cleanLinks;
-        oPrefs.amazonId = oSettings.amazonId || '';
+        // amazonId is fixed to 'wnpl-21' and not user-configurable
         // Check for Page Action changes
         if (oSettings.pageaction == true && oPrefs.pageaction == false){
             browser.tabs.onUpdated.addListener(showPageAction);

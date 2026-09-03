@@ -96,11 +96,10 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
             break;
         case 'copy-tab-url':
             // Copy tab URL without opening the tab
-            browser.tabs.get(menuInfo.tabId).then((tab) => {
-                updateClipboard(deco(tab.url));
-            }).catch((err) => {
-                console.log('Error getting tab:', err);
-            });
+            // For tab context, currTab is the clicked tab
+            if (currTab && currTab.url) {
+                updateClipboard(deco(currTab.url));
+            }
             break;
         case 'copy-page-url':
             // Check for Shift or Ctrl as modifier

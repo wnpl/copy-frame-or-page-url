@@ -59,6 +59,10 @@
     "message": "Unicode-Zeichen im Link dekodieren (z. B. 茶 statt %E8%8C%B6)",
     "description": "Option zum Dekodieren von Unicode in URLs"
   },
+  "optionShowTabMenu": {
+    "message": "\"Link zum Tab kopieren\" im Kontextmenü anzeigen",
+    "description": "Option zum Anzeigen des Tab-Kontextmenü-Eintrags"
+  },
   "formatUrl": {
     "message": "Nur reiner Link",
     "description": "Option für das reine URL-Format"

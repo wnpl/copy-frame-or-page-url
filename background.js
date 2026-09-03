@@ -19,9 +19,11 @@ var oPrefs = {
     clickshift: 'markdown',    // Shift+click on browser action copies markdown
     clickctrl: 'html',        // Shift+click on browser action copies html
     pageaction: false,        // Button in the address bar
-    decode: true            // Option to decode Unicode URLs
+    decode: true,           // Option to decode Unicode URLs
+    showtabmenu: true        // Show context menu item for tabs
 }
 let pagemenu;
+let tabmenu;
 let iconpath = 'icons/link-64.svg'; // default path, potentially updated later
 
 // Update oPrefs from storage
@@ -57,6 +59,13 @@ async function init(){
     if (oPrefs.pageaction){
         browser.tabs.onUpdated.addListener(showPageAction);
     }
+    if (oPrefs.showtabmenu) {
+        tabmenu = browser.menus.create({
+            id: "copy-tab-url",
+            title: browser.i18n.getMessage("menuCopyTabUrl"),
+            contexts: ["tab"]
+        });
+    }
     updateButtonTooltips();
 }
 
@@ -74,11 +83,7 @@ let linkmenu = browser.menus.create({
     contexts: ["link"]
 });
 
-let tabmenu = browser.menus.create({
-    id: "copy-tab-url",
-    title: browser.i18n.getMessage("menuCopyTabUrl"),
-    contexts: ["tab"]
-});
+
 
 browser.menus.onClicked.addListener((menuInfo, currTab) => {
     switch (menuInfo.menuItemId) {
@@ -267,6 +272,7 @@ function handleMessage(request, sender, sendResponse){
         oPrefs.clickshift = oSettings.clickshift;
         oPrefs.clickctrl = oSettings.clickctrl;
         oPrefs.decode = oSettings.decode;
+        oPrefs.showtabmenu = oSettings.showtabmenu;
         // Check for Page Action changes
         if (oSettings.pageaction == true && oPrefs.pageaction == false){
             browser.tabs.onUpdated.addListener(showPageAction);
@@ -289,6 +295,20 @@ function handleMessage(request, sender, sendResponse){
             pagemenu = browser.menus.remove("copy-page-url");
             pagemenu.then(() => {
                 oPrefs.allpagesmenu = false;
+            });
+        }
+        // Add or remove tab menu
+        if (oPrefs.showtabmenu == true && oPrefs.tabmenu == undefined) {
+            tabmenu = browser.menus.create({
+                id: "copy-tab-url",
+                title: browser.i18n.getMessage("menuCopyTabUrl"),
+                contexts: ["tab"]
+            });
+            oPrefs.tabmenu = true;
+        } else if (oPrefs.showtabmenu == false && oPrefs.tabmenu == true) {
+            tabmenu = browser.menus.remove("copy-tab-url");
+            tabmenu.then(() => {
+                oPrefs.tabmenu = false;
             });
         }
         // Fix button tooltips

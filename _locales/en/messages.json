@@ -59,6 +59,10 @@
     "message": "Decode Unicode characters in the link (for example, 茶 instead of %E8%8C%B6)",
     "description": "Option to decode Unicode in URLs"
   },
+  "optionShowTabMenu": {
+    "message": "Show \"Copy link to tab\" in context menu",
+    "description": "Option to show the tab context menu item"
+  },
   "formatUrl": {
     "message": "Plain link only",
     "description": "Option for plain URL format"

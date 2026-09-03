@@ -39,28 +39,36 @@
     "message": "Frame-Link kopieren",
     "description": "Kontextmenü-Eintrag zum Kopieren der Frame-URL"
   },
+  "menuCopyTabUrl": {
+    "message": "Link zum Tab kopieren",
+    "description": "Kontextmenü-Eintrag zum Kopieren der Tab-URL"
+  },
   "menuCopyDecodeUrl": {
     "message": "Dekodierten Link kopieren",
     "description": "Kontextmenü-Eintrag zum Kopieren einer dekodierten Link-URL"
   },
   "optionAllPages": {
     "message": "Kontextmenü-Eintrag auf allen Seiten anzeigen (auch ohne Frames)",
-    "description": "Option zum Anzeigen des Kontextmenüs auf allen Seiten"
+    "description": "Option"
   },
   "optionShowPageAction": {
-    "message": "Schaltfläche in der Adressleiste anzeigen",
-    "description": "Option zum Anzeigen der Page-Action-Schaltfläche"
+    "message": "Optionale Schaltfläche in der Adressleiste (Page Action) anzeigen",
+    "description": "Option"
   },
   "optionDecodeUnicode": {
     "message": "Unicode-Zeichen im Link dekodieren (z. B. 茶 statt %E8%8C%B6)",
     "description": "Option zum Dekodieren von Unicode in URLs"
+  },
+  "optionShowTabMenu": {
+    "message": "\"Tab-Link kopieren\" im Kontextmenü von Tabs anzeigen",
+    "description": "Option"
   },
   "formatUrl": {
     "message": "Nur reiner Link",
     "description": "Option für das reine URL-Format"
   },
   "formatMarkdown": {
-    "message": "Markdown: [Titel](URL)",
+    "message": "Markdown (MD)",
     "description": "Option für das Markdown-Format"
   },
   "formatHtml": {
@@ -68,40 +76,40 @@
     "description": "Option für das HTML-Format"
   },
   "labelClickPlain": {
-    "message": "Normaler Klick:",
-    "description": "Beschriftung für die Aktion bei normalem Klick"
+    "message": "Klick:",
+    "description": "Beschriftung für Klick-Aktion"
   },
   "labelClickShift": {
-    "message": "Umschalt+Klick:",
-    "description": "Beschriftung für die Aktion bei Umschalt+Klick"
+    "message": "⇧ + Klick:",
+    "description": "Beschriftung für Shift+Klick-Aktion"
   },
   "labelClickCtrl": {
-    "message": "Strg+Klick:",
-    "description": "Beschriftung für die Aktion bei Strg+Klick"
+    "message": "⌘ + Klick:",
+    "description": "Beschriftung für Ctrl/Cmd+Klick-Aktion"
   },
   "noteFrameUrlLimitation": {
     "message": "Hinweis: Das Kopieren eines Frame-Links ist auf den reinen Link beschränkt.",
     "description": "Hinweis zu den Einschränkungen bei Frame-URLs"
   },
   "sectionPageActionButton": {
-    "message": "Optionale Schaltfläche in der Adressleiste (Page Action):",
-    "description": "Abschnittsüberschrift für Page-Action-Optionen"
+    "message": "Optionale Schaltfläche in der Adressleiste (Page Action) anzeigen",
+    "description": "Option"
   },
   "sectionModifierActions": {
-    "message": "Aktion der Toolbar-Schaltfläche oder des Kontextmenüs mit verschiedenen Modifikatortasten:",
-    "description": "Abschnittsüberschrift für Modifikatortasten-Aktionen"
+    "message": "Aktion der Toolbar-Schaltfläche oder des Kontextmenüs mit verschiedenen Modifikatortasten",
+    "description": "Abschnittsüberschrift"
   },
   "sectionMiscellaneous": {
-    "message": "Verschiedene Optionen",
-    "description": "Abschnittsüberschrift für verschiedene Optionen"
+    "message": "Anzeige-Optionen",
+    "description": "Abschnitt"
   },
   "sectionKeyboardShortcut": {
-    "message": "Optionales Tastaturkürzel:",
-    "description": "Abschnittsüberschrift für Tastaturkürzel-Info"
+    "message": "Tipp: Optionales Tastaturkürzel einrichten",
+    "description": "Abschnitt"
   },
   "linkManageShortcuts": {
-    "message": "Klicken Sie auf das Zahnrad-Symbol auf der Add-ons-Seite, dann \"Tastaturkürzel für Erweiterungen verwalten\" (siehe:",
-    "description": "Anleitung zum Verwalten von Tastaturkürzeln"
+    "message": "Klicken Sie auf das Zahnrad-Symbol auf der Add-ons-Seite, dann \"Tastaturkürzel für Erweiterungen verwalten\". Siehe dazu:",
+    "description": "Anleitung"
   },
   "tooltipCopyUrl": {
     "message": "Aktuellen Seiten-Link kopieren",
@@ -129,8 +137,28 @@
     "message": "Tastaturkürzel für Erweiterungen in Firefox verwalten",
     "description": "Linktext zum Verwalten von Tastaturkürzeln"
   },
-  "labelClickCtrlMac": {
-    "message": "Cmd+Klick:",
-    "description": "Beschriftung für die Aktion bei Cmd+Klick auf Mac"
+  "menuCopyPageUrlBase": {
+    "message": "Seiten-Link kopieren",
+    "description": "Basis-Menü"
+  },
+  "menuCopyTabUrlBase": {
+    "message": "Tab-Link kopieren",
+    "description": "Basis-Menü"
+  },
+  "formatMarkdownShort": {
+    "message": "MD",
+    "description": "MD"
+  },
+  "formatHtmlShort": {
+    "message": "HTML",
+    "description": "HTML"
+  },
+  "formatUrlShort": {
+    "message": "URL",
+    "description": "URL"
+  },
+  "sectionMiscellaneousOptions": {
+    "message": "Verschiedene Optionen",
+    "description": "Abschnitt für verschiedene Optionen"
   }
 }

@@ -43,24 +43,32 @@
     "message": "Copy decoded link",
     "description": "Context menu item for copying a decoded link URL"
   },
+  "menuCopyTabUrl": {
+    "message": "Copy link to tab",
+    "description": "Context menu item for copying the tab URL"
+  },
   "optionAllPages": {
     "message": "Show context menu item on all pages, framed or not",
-    "description": "Option to show the context menu on all pages"
+    "description": "Option"
   },
   "optionShowPageAction": {
-    "message": "Show button inside address bar",
-    "description": "Option to show the page action button"
+    "message": "Show optional button in address bar (Page Action)",
+    "description": "Option"
   },
   "optionDecodeUnicode": {
     "message": "Decode Unicode characters in the link (for example, 茶 instead of %E8%8C%B6)",
     "description": "Option to decode Unicode in URLs"
+  },
+  "optionShowTabMenu": {
+    "message": "Show \"Copy tab link\" in context menu of tabs",
+    "description": "Option"
   },
   "formatUrl": {
     "message": "Plain link only",
     "description": "Option for plain URL format"
   },
   "formatMarkdown": {
-    "message": "Markdown: [title](url)",
+    "message": "Markdown (MD)",
     "description": "Option for Markdown format"
   },
   "formatHtml": {
@@ -68,40 +76,40 @@
     "description": "Option for HTML format"
   },
   "labelClickPlain": {
-    "message": "Plain click:",
+    "message": "Click:",
     "description": "Label for plain click action"
   },
   "labelClickShift": {
-    "message": "Shift+click:",
+    "message": "⇧ + Click:",
     "description": "Label for Shift+click action"
   },
   "labelClickCtrl": {
-    "message": "Ctrl+click:",
-    "description": "Label for Ctrl+click action"
+    "message": "⌘ + Click:",
+    "description": "Label for Ctrl/Cmd+click action"
   },
   "noteFrameUrlLimitation": {
     "message": "Note: Copying a frame link is limited to the plain link.",
     "description": "Note about frame URL limitations"
   },
   "sectionPageActionButton": {
-    "message": "Optional address bar (page action) button:",
-    "description": "Section header for page action button options"
+    "message": "Show optional button in address bar (Page Action)",
+    "description": "Option"
   },
   "sectionModifierActions": {
-    "message": "Action performed by toolbar button or context menu item with different modifiers:",
-    "description": "Section header for modifier key actions"
+    "message": "Action of toolbar button or context menu with modifier keys",
+    "description": "Section header"
   },
   "sectionMiscellaneous": {
-    "message": "Miscellaneous options",
-    "description": "Section header for miscellaneous options"
+    "message": "Display options",
+    "description": "Section"
   },
   "sectionKeyboardShortcut": {
-    "message": "Optional keyboard shortcut:",
-    "description": "Section header for keyboard shortcut info"
+    "message": "Tip: Set up optional keyboard shortcut",
+    "description": "Section"
   },
   "linkManageShortcuts": {
-    "message": "Click the gear button on the Add-ons page, then \"Manage extension shortcuts\" (see:",
-    "description": "Instructions for managing keyboard shortcuts"
+    "message": "Click the gear icon on the Add-ons page, then \"Manage extension shortcuts\". See:",
+    "description": "Instructions"
   },
   "tooltipCopyUrl": {
     "message": "Copy current page link",
@@ -129,8 +137,28 @@
     "message": "Manage extension shortcuts in Firefox",
     "description": "Link text for managing extension shortcuts"
   },
-  "labelClickCtrlMac": {
-    "message": "Cmd+click:",
-    "description": "Label for Cmd+click action on Mac"
+  "menuCopyPageUrlBase": {
+    "message": "Copy page link",
+    "description": "Base menu"
+  },
+  "menuCopyTabUrlBase": {
+    "message": "Copy tab link",
+    "description": "Base menu"
+  },
+  "formatMarkdownShort": {
+    "message": "MD",
+    "description": "MD"
+  },
+  "formatHtmlShort": {
+    "message": "HTML",
+    "description": "HTML"
+  },
+  "formatUrlShort": {
+    "message": "URL",
+    "description": "URL"
+  },
+  "sectionMiscellaneousOptions": {
+    "message": "Miscellaneous options",
+    "description": "Section for various options"
   }
 }

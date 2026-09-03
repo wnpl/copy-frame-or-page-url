@@ -27,7 +27,7 @@ var oPrefs = {
     decode: true,           // Option to decode Unicode URLs
     showtabmenu: true,       // Show context menu item for tabs
     cleanLinks: false,       // Clean links (remove tracking parameters) before copying
-    amazonId: 'wnpl-21'      // Amazon affiliate ID (fixed, not user-configurable)
+    amazonId: ''            // Amazon affiliate ID (empty for now, not user-configurable)
 };
 let pagemenu;
 let tabmenu;

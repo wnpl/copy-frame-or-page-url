@@ -160,5 +160,41 @@
   "sectionMiscellaneousOptions": {
     "message": "Miscellaneous options",
     "description": "Section for various options"
+  },
+  "optionCleanLinks": {
+    "message": "Clean links (remove tracking parameters)",
+    "description": "Option to clean URLs before copying"
+  },
+  "optionAmazonId": {
+    "message": "Amazon affiliate ID (e.g., myid-21)",
+    "description": "Amazon affiliate tracking ID to add to cleaned Amazon links"
+  },
+  "menuCopyCleanPageUrl": {
+    "message": "Copy clean page link",
+    "description": "Context menu item for copying the cleaned page URL"
+  },
+  "menuCopyCleanFrameUrl": {
+    "message": "Copy clean framed page link",
+    "description": "Context menu item for copying a cleaned framed page URL"
+  },
+  "menuCopyCleanDecodeUrl": {
+    "message": "Copy clean decoded link",
+    "description": "Context menu item for copying a cleaned decoded link URL"
+  },
+  "menuCopyCleanTabUrl": {
+    "message": "Copy clean tab link",
+    "description": "Context menu item for copying the cleaned tab URL"
+  },
+  "tooltipCopyCleanUrl": {
+    "message": "Copy clean current page link",
+    "description": "Tooltip for copying clean URL"
+  },
+  "tooltipCopyCleanMarkdown": {
+    "message": "Copy clean title+link as markdown",
+    "description": "Tooltip for copying clean URL as markdown"
+  },
+  "tooltipCopyCleanHtml": {
+    "message": "Copy clean title+link as HTML link",
+    "description": "Tooltip for copying clean URL as HTML"
   }
 }

@@ -33,6 +33,15 @@ browser.runtime.sendMessage({
 		if (oSettings[chks[i].name] == true) chks[i].checked = true;
 		else chks[i].checked = false;
 	}
+	// Text inputs
+	var txts = document.querySelectorAll('.chk input[type="text"]');
+	for (var i=0; i<txts.length; i++){
+		if (oSettings[txts[i].name] !== undefined && oSettings[txts[i].name] !== null) {
+			txts[i].value = oSettings[txts[i].name];
+		} else {
+			txts[i].value = '';
+		}
+	}
 	// Selects
 	var sels = document.querySelectorAll('select[name^="click"]');
 	for (var i=0; i<sels.length; i++){
@@ -64,6 +73,11 @@ function updatePref(evt){
 	for (var i=0; i<chks.length; i++){
 		oSettings[chks[i].name] = chks[i].checked;
 	}
+	// Text inputs
+	var txts = document.querySelectorAll('.chk input[type="text"]');
+	for (var i=0; i<txts.length; i++){
+		oSettings[txts[i].name] = txts[i].value;
+	}
 	// Selects
 	var sels = document.querySelectorAll('select[name^="click"]');
 	for (var i=0; i<sels.length; i++){
@@ -84,4 +98,9 @@ for (var i=0; i<chks.length; i++){
 var sels = document.querySelectorAll('select[name^="click"]');
 for (var i=0; i<sels.length; i++){
 	sels[i].addEventListener('change', updatePref, false);
+}
+// Also attach to text inputs
+var txts = document.querySelectorAll('.chk input[type="text"]');
+for (var i=0; i<txts.length; i++){
+	txts[i].addEventListener('change', updatePref, false);
 }

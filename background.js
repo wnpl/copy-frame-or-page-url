@@ -9,6 +9,10 @@
 // version 1.5 - i18n, custom context menu for decoded URLs
 // version 1.6 - Manifest V3 (event page), rename to "Copy Link to Page"
 // version 1.7 - dynamic menu labels
+// version 1.8 - link cleaner support
+
+// Load linkcleaner library
+importScripts('lib/linkcleaner.js');
 
 /**** Create and populate data structure ****/
 
@@ -21,11 +25,14 @@ var oPrefs = {
     clickctrl: 'html',        // Shift+click on browser action copies html
     pageaction: false,        // Button in the address bar
     decode: true,           // Option to decode Unicode URLs
-    showtabmenu: true        // Show context menu item for tabs
-}
+    showtabmenu: true,       // Show context menu item for tabs
+    cleanLinks: false,       // Clean links (remove tracking parameters) before copying
+    amazonId: ''            // Amazon affiliate ID (not active by default)
+};
 let pagemenu;
 let tabmenu;
 let iconpath = 'icons/link-64.svg'; // default path, potentially updated later
+let linkCleaner; // Will be loaded from lib/linkcleaner.js
 
 // Update oPrefs from storage
 async function loadPrefs(){
@@ -99,11 +106,11 @@ let linkmenu = browser.menus.create({
 browser.menus.onClicked.addListener((menuInfo, currTab) => {
     switch (menuInfo.menuItemId) {
         case 'copy-decode-url':
-            updateClipboard(deco(menuInfo.linkUrl));
+            updateClipboard(cleanAndDeco(menuInfo.linkUrl));
             break;
         case 'copy-frame-url':
             // Copy to clipboard
-            updateClipboard(deco(menuInfo.frameUrl));
+            updateClipboard(cleanAndDeco(menuInfo.frameUrl));
             break;
         case 'copy-tab-url':
             // Copy tab URL without opening the tab
@@ -120,11 +127,11 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
                 }
                 // Set up text for copying
                 if (style == 'html'){
-                    var txt = '<a href="' + deco(currTab.url) + '">' + currTab.title + '</a>';
+                    var txt = '<a href="' + cleanAndDeco(currTab.url) + '">' + currTab.title + '</a>';
                 } else if (style == 'markdown'){
-                    var txt = '[' + currTab.title + '](' + deco(currTab.url) + ')';
+                    var txt = '[' + currTab.title + '](' + cleanAndDeco(currTab.url) + ')';
                 } else {
-                    txt = deco(currTab.url);
+                    txt = cleanAndDeco(currTab.url);
                 }
                 updateClipboard(txt);
             }
@@ -141,11 +148,11 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
             }
             // Set up text for copying
             if (style == 'html'){
-                var txt = '<a href="' + deco(currTab.url) + '">' + currTab.title + '</a>';
+                var txt = '<a href="' + cleanAndDeco(currTab.url) + '">' + currTab.title + '</a>';
             } else if (style == 'markdown'){
-                var txt = '[' + currTab.title + '](' + deco(currTab.url) + ')';
+                var txt = '[' + currTab.title + '](' + cleanAndDeco(currTab.url) + ')';
             } else {
-                txt = deco(menuInfo.pageUrl);
+                txt = cleanAndDeco(menuInfo.pageUrl);
             }
             updateClipboard(txt);
             break;
@@ -174,6 +181,32 @@ function deco(urltxt){ // version 1.3
     }
 }
 
+// Clean URL using link-cleaner-js library
+function cleanUrl(urltxt) {
+    if (oPrefs.cleanLinks == true && urltxt) {
+        try {
+            // Create settings object for link cleaner
+            var settings = {};
+            // Add amazonId if set (for future use)
+            if (oPrefs.amazonId) {
+                settings.amazonId = oPrefs.amazonId;
+            }
+            var cleaned = linkCleaner.clean(urltxt, settings);
+            return cleaned.toString();
+        } catch(err) {
+            console.log('Error cleaning URL: '+err.message, urltxt);
+            return urltxt;
+        }
+    } else {
+        return urltxt;
+    }
+}
+
+// Combined clean and decode function
+function cleanAndDeco(urltxt) {
+    return deco(cleanUrl(urltxt));
+}
+
 /**** Toolbar button and keyboard shortcut ****/
 
 // MV3: browser_action -> action
@@ -189,11 +222,11 @@ browser.action.onClicked.addListener((tab, clickData) => {
     }
     // Set up text for copying
     if (style == 'html'){
-        var txt = '<a href="' + deco(tab.url) + '">' + tab.title + '</a>';
+        var txt = '<a href="' + cleanAndDeco(tab.url) + '">' + tab.title + '</a>';
     } else if (style == 'markdown'){
-        var txt = '[' + tab.title + '](' + deco(tab.url) + ')';
+        var txt = '[' + tab.title + '](' + cleanAndDeco(tab.url) + ')';
     } else {
-        txt = deco(tab.url);
+        txt = cleanAndDeco(tab.url);
     }
     updateClipboard(txt);
 });
@@ -204,7 +237,7 @@ browser.commands.onCommand.addListener((strName) => {
             active: true,
             currentWindow: true
         }).then((currTab) => {
-            updateClipboard(deco(currTab[0].url));
+            updateClipboard(cleanAndDeco(currTab[0].url));
         }).catch((err) => {
             console.log(err);
         });
@@ -213,7 +246,7 @@ browser.commands.onCommand.addListener((strName) => {
             active: true,
             currentWindow: true
         }).then((currTab) => {
-            updateClipboard('[' + currTab[0].title + '](' + deco(currTab[0].url) + ')');
+            updateClipboard('[' + currTab[0].title + '](' + cleanAndDeco(currTab[0].url) + ')');
         }).catch((err) => {
             console.log(err);
         });
@@ -222,7 +255,7 @@ browser.commands.onCommand.addListener((strName) => {
             active: true,
             currentWindow: true
         }).then((currTab) => {
-            updateClipboard('<a href="' + deco(currTab.url) + '">' + currTab.title + '</a>');
+            updateClipboard('<a href="' + cleanAndDeco(currTab[0].url) + '">' + currTab[0].title + '</a>');
         }).catch((err) => {
             console.log(err);
         });
@@ -255,11 +288,11 @@ browser.pageAction.onClicked.addListener((tab, clickData) => {
     }
     // Set up text for copying
     if (style == 'html'){
-        var txt = '<a href="' + deco(tab.url) + '">' + tab.title + '</a>';
+        var txt = '<a href="' + cleanAndDeco(tab.url) + '">' + tab.title + '</a>';
     } else if (style == 'markdown'){
-        var txt = '[' + tab.title + '](' + deco(tab.url) + ')';
+        var txt = '[' + tab.title + '](' + cleanAndDeco(tab.url) + ')';
     } else {
-        txt = deco(tab.url);
+        txt = cleanAndDeco(tab.url);
     }
     updateClipboard(txt);
 });
@@ -287,14 +320,28 @@ function getFormatLabel(f) {
 }
 
 function updateButtonTooltips(){
-    if (oPrefs.clickplain == 'url'){
-        buttonTitle = browser.i18n.getMessage("tooltipCopyUrl");
-    }
-    if (oPrefs.clickplain == 'markdown'){
-        buttonTitle = browser.i18n.getMessage("tooltipCopyMarkdown");
-    }
-    if (oPrefs.clickplain == 'html'){
-        buttonTitle = browser.i18n.getMessage("tooltipCopyHtml");
+    if (oPrefs.cleanLinks) {
+        // Use clean tooltips when link cleaning is enabled
+        if (oPrefs.clickplain == 'url'){
+            buttonTitle = browser.i18n.getMessage("tooltipCopyCleanUrl");
+        }
+        if (oPrefs.clickplain == 'markdown'){
+            buttonTitle = browser.i18n.getMessage("tooltipCopyCleanMarkdown");
+        }
+        if (oPrefs.clickplain == 'html'){
+            buttonTitle = browser.i18n.getMessage("tooltipCopyCleanHtml");
+        }
+    } else {
+        // Use regular tooltips when link cleaning is disabled
+        if (oPrefs.clickplain == 'url'){
+            buttonTitle = browser.i18n.getMessage("tooltipCopyUrl");
+        }
+        if (oPrefs.clickplain == 'markdown'){
+            buttonTitle = browser.i18n.getMessage("tooltipCopyMarkdown");
+        }
+        if (oPrefs.clickplain == 'html'){
+            buttonTitle = browser.i18n.getMessage("tooltipCopyHtml");
+        }
     }
     if (buttonTitle.length > 0){
         // MV3: browserAction -> action
@@ -321,6 +368,8 @@ function handleMessage(request, sender, sendResponse){
         oPrefs.clickctrl = oSettings.clickctrl;
         oPrefs.decode = oSettings.decode;
         oPrefs.showtabmenu = oSettings.showtabmenu;
+        oPrefs.cleanLinks = oSettings.cleanLinks;
+        oPrefs.amazonId = oSettings.amazonId || '';
         // Check for Page Action changes
         if (oSettings.pageaction == true && oPrefs.pageaction == false){
             browser.tabs.onUpdated.addListener(showPageAction);
@@ -347,9 +396,10 @@ function handleMessage(request, sender, sendResponse){
         }
         // Add or remove tab menu
         if (oPrefs.showtabmenu == true && oPrefs.tabmenu !== true) {
+            var tabMenuKey = oPrefs.cleanLinks ? "menuCopyCleanTabUrl" : "menuCopyTabUrlBase";
             tabmenu = browser.menus.create({
                 id: "copy-tab-url",
-                title: getMenuTitleWithModifiers("menuCopyTabUrlBase"),
+                title: getMenuTitleWithModifiers(tabMenuKey),
                 contexts: ["tab"]
             });
             oPrefs.tabmenu = true;
@@ -360,9 +410,20 @@ function handleMessage(request, sender, sendResponse){
         }
         // Fix button tooltips
         updateButtonTooltips();
-    if (oPrefs.allpagesmenu) browser.menus.update("copy-page-url",{title:getMenuTitleWithModifiers("menuCopyPageUrlBase")});
-    if (oPrefs.tabmenu) browser.menus.update("copy-tab-url",{title:getMenuTitleWithModifiers("menuCopyTabUrlBase")});
-    }
+        
+        // Update menu titles based on cleanLinks setting
+        if (oPrefs.allpagesmenu) {
+            var pageMenuKey = oPrefs.cleanLinks ? "menuCopyCleanPageUrl" : "menuCopyPageUrlBase";
+            browser.menus.update("copy-page-url", {title: getMenuTitleWithModifiers(pageMenuKey)});
+        }
+        if (oPrefs.tabmenu) {
+            var tabMenuKey = oPrefs.cleanLinks ? "menuCopyCleanTabUrl" : "menuCopyTabUrlBase";
+            browser.menus.update("copy-tab-url", {title: getMenuTitleWithModifiers(tabMenuKey)});
+        }
+        
+        // Update frame and link menu titles
+        browser.menus.update("copy-frame-url", {title: browser.i18n.getMessage(oPrefs.cleanLinks ? "menuCopyCleanFrameUrl" : "menuCopyFrameUrl")});
+        browser.menus.update("copy-decode-url", {title: browser.i18n.getMessage(oPrefs.cleanLinks ? "menuCopyCleanDecodeUrl" : "menuCopyDecodeUrl")});    }
 }
 browser.runtime.onMessage.addListener(handleMessage);
 

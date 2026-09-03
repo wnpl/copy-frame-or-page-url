@@ -65,6 +65,14 @@ async function init(){
             title: browser.i18n.getMessage("menuCopyTabUrl"),
             contexts: ["tab"]
         });
+        oPrefs.tabmenu = true;
+    } else {
+        // If showtabmenu is false, ensure tab menu is removed
+        if (oPrefs.tabmenu === true) {
+            browser.menus.remove("copy-tab-url").then(() => {
+                oPrefs.tabmenu = false;
+            });
+        }
     }
     updateButtonTooltips();
 }
@@ -297,16 +305,15 @@ function handleMessage(request, sender, sendResponse){
             });
         }
         // Add or remove tab menu
-        if (oPrefs.showtabmenu == true && oPrefs.tabmenu == undefined) {
+        if (oPrefs.showtabmenu == true && oPrefs.tabmenu !== true) {
             tabmenu = browser.menus.create({
                 id: "copy-tab-url",
                 title: browser.i18n.getMessage("menuCopyTabUrl"),
                 contexts: ["tab"]
             });
             oPrefs.tabmenu = true;
-        } else if (oPrefs.showtabmenu == false && oPrefs.tabmenu == true) {
-            tabmenu = browser.menus.remove("copy-tab-url");
-            tabmenu.then(() => {
+        } else if (oPrefs.showtabmenu == false && oPrefs.tabmenu === true) {
+            browser.menus.remove("copy-tab-url").then(() => {
                 oPrefs.tabmenu = false;
             });
         }

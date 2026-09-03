@@ -21,6 +21,7 @@
   },
   "background": {
     "scripts": [
+      "lib/linkcleaner.js",
       "background.js"
     ]
   },

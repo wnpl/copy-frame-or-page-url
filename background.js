@@ -11,9 +11,6 @@
 // version 1.7 - dynamic menu labels
 // version 1.8 - link cleaner support
 
-// Load linkcleaner library
-importScripts('lib/linkcleaner.js');
-
 /**** Create and populate data structure ****/
 
 // Default starting values
@@ -32,7 +29,6 @@ var oPrefs = {
 let pagemenu;
 let tabmenu;
 let iconpath = 'icons/link-64.svg'; // default path, potentially updated later
-let linkCleaner; // Will be loaded from lib/linkcleaner.js
 
 // Update oPrefs from storage
 async function loadPrefs(){

@@ -68,7 +68,7 @@
     "description": "Option für das reine URL-Format"
   },
   "formatMarkdown": {
-    "message": "Markdown: [Titel](URL)",
+    "message": "Markdown (MD)",
     "description": "Option für das Markdown-Format"
   },
   "formatHtml": {
@@ -150,15 +150,15 @@
     "description": "Basis-Menü"
   },
   "formatMarkdownShort": {
-    "message": "Markdown",
-    "description": "Kurz"
+    "message": "MD",
+    "description": "MD"
   },
   "formatHtmlShort": {
     "message": "HTML",
-    "description": "Kurz"
+    "description": "HTML"
   },
   "formatUrlShort": {
     "message": "URL",
-    "description": "Kurz"
+    "description": "URL"
   }
 }

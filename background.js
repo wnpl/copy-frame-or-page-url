@@ -271,9 +271,9 @@ function getMenuTitleWithModifiers(baseKey) {
     var sf = oPrefs.clickshift, cf = oPrefs.clickctrl;
     if (sf !== oPrefs.clickplain || cf !== oPrefs.clickplain) {
         var mp = [];
-        if (sf !== oPrefs.clickplain) mp.push('Shift: ' + getFormatLabel(sf));
+        if (sf !== oPrefs.clickplain) mp.push('⇧: ' + getFormatLabel(sf));
         if (cf !== oPrefs.clickplain && cf !== sf) {
-            var ck = (navigator.platform.toUpperCase().indexOf('MAC') >= 0) ? 'Cmd' : 'Ctrl';
+            var ck = (navigator.platform.toUpperCase().indexOf('MAC') >= 0) ? '⌘' : '⌃';
             mp.push(ck + ': ' + getFormatLabel(cf));
         }
         if (mp.length > 0) p.push('(' + mp.join(', ') + ')');

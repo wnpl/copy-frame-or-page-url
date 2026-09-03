@@ -8,6 +8,7 @@
 // version 1.4 - simplify icons, add HTML link format
 // version 1.5 - i18n, custom context menu for decoded URLs
 // version 1.6 - Manifest V3 (event page), rename to "Copy Link to Page"
+// version 1.7 - dynamic menu labels
 
 /**** Create and populate data structure ****/
 
@@ -50,7 +51,7 @@ async function init(){
     if (oPrefs.allpages == true){
         pagemenu = browser.menus.create({
             id: "copy-page-url",
-            title: browser.i18n.getMessage("menuCopyPageUrl"),
+            title: getMenuTitleWithModifiers("menuCopyPageUrlBase"),
             contexts: ["page", "selection"]
         }, function(){ // Optimistic!
             oPrefs.allpagesmenu = true;
@@ -62,7 +63,7 @@ async function init(){
     if (oPrefs.showtabmenu) {
         tabmenu = browser.menus.create({
             id: "copy-tab-url",
-            title: browser.i18n.getMessage("menuCopyTabUrl"),
+            title: getMenuTitleWithModifiers("menuCopyTabUrlBase"),
             contexts: ["tab"]
         });
         oPrefs.tabmenu = true;
@@ -75,6 +76,8 @@ async function init(){
         }
     }
     updateButtonTooltips();
+    if (oPrefs.allpagesmenu) browser.menus.update("copy-page-url",{title:getMenuTitleWithModifiers("menuCopyPageUrlBase")});
+    if (oPrefs.tabmenu) browser.menus.update("copy-tab-url",{title:getMenuTitleWithModifiers("menuCopyTabUrlBase")});
 }
 
 /**** Context menu items ****/
@@ -262,6 +265,27 @@ browser.pageAction.onClicked.addListener((tab, clickData) => {
 });
 
 var buttonTitle = '';
+
+function getMenuTitleWithModifiers(baseKey) {
+    var p = [browser.i18n.getMessage(baseKey)];
+    var sf = oPrefs.clickshift, cf = oPrefs.clickctrl;
+    if (sf !== oPrefs.clickplain || cf !== oPrefs.clickplain) {
+        var mp = [];
+        if (sf !== oPrefs.clickplain) mp.push('Shift: ' + getFormatLabel(sf));
+        if (cf !== oPrefs.clickplain && cf !== sf) {
+            var ck = (navigator.platform.toUpperCase().indexOf('MAC') >= 0) ? 'Cmd' : 'Ctrl';
+            mp.push(ck + ': ' + getFormatLabel(cf));
+        }
+        if (mp.length > 0) p.push('(' + mp.join(', ') + ')');
+    }
+    return p.join(' ');
+}
+function getFormatLabel(f) {
+    if (f === 'markdown') return browser.i18n.getMessage('formatMarkdownShort');
+    if (f === 'html') return browser.i18n.getMessage('formatHtmlShort');
+    return browser.i18n.getMessage('formatUrlShort');
+}
+
 function updateButtonTooltips(){
     if (oPrefs.clickplain == 'url'){
         buttonTitle = browser.i18n.getMessage("tooltipCopyUrl");
@@ -310,7 +334,7 @@ function handleMessage(request, sender, sendResponse){
         if (oPrefs.allpages == true && oPrefs.allpagesmenu == false) {
             browser.menus.create({
                 id: "copy-page-url",
-                title: browser.i18n.getMessage("menuCopyPageUrl"),
+                title: getMenuTitleWithModifiers("menuCopyPageUrlBase"),
                 contexts: ["page", "selection"]
             }, function(){ // Optimistic!
                 oPrefs.allpagesmenu = true;
@@ -325,7 +349,7 @@ function handleMessage(request, sender, sendResponse){
         if (oPrefs.showtabmenu == true && oPrefs.tabmenu !== true) {
             tabmenu = browser.menus.create({
                 id: "copy-tab-url",
-                title: browser.i18n.getMessage("menuCopyTabUrl"),
+                title: getMenuTitleWithModifiers("menuCopyTabUrlBase"),
                 contexts: ["tab"]
             });
             oPrefs.tabmenu = true;
@@ -336,6 +360,8 @@ function handleMessage(request, sender, sendResponse){
         }
         // Fix button tooltips
         updateButtonTooltips();
+    if (oPrefs.allpagesmenu) browser.menus.update("copy-page-url",{title:getMenuTitleWithModifiers("menuCopyPageUrlBase")});
+    if (oPrefs.tabmenu) browser.menus.update("copy-tab-url",{title:getMenuTitleWithModifiers("menuCopyTabUrlBase")});
     }
 }
 browser.runtime.onMessage.addListener(handleMessage);

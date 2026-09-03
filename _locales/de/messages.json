@@ -140,5 +140,25 @@
   "labelClickCtrlMac": {
     "message": "Cmd+Klick:",
     "description": "Beschriftung für die Aktion bei Cmd+Klick auf Mac"
+  },
+  "menuCopyPageUrlBase": {
+    "message": "Seiten-Link kopieren",
+    "description": "Basis-Menü"
+  },
+  "menuCopyTabUrlBase": {
+    "message": "Tab-Link kopieren",
+    "description": "Basis-Menü"
+  },
+  "formatMarkdownShort": {
+    "message": "Markdown",
+    "description": "Kurz"
+  },
+  "formatHtmlShort": {
+    "message": "HTML",
+    "description": "Kurz"
+  },
+  "formatUrlShort": {
+    "message": "URL",
+    "description": "Kurz"
   }
 }

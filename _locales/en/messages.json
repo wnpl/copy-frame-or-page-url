@@ -140,5 +140,25 @@
   "labelClickCtrlMac": {
     "message": "Cmd+click:",
     "description": "Label for Cmd+click action on Mac"
+  },
+  "menuCopyPageUrlBase": {
+    "message": "Copy page link",
+    "description": "Base menu"
+  },
+  "menuCopyTabUrlBase": {
+    "message": "Copy tab link",
+    "description": "Base menu"
+  },
+  "formatMarkdownShort": {
+    "message": "Markdown",
+    "description": "Short label"
+  },
+  "formatHtmlShort": {
+    "message": "HTML",
+    "description": "Short label"
+  },
+  "formatUrlShort": {
+    "message": "URL",
+    "description": "Short label"
   }
 }

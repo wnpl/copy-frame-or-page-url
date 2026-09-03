@@ -106,7 +106,24 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
             // Copy tab URL without opening the tab
             // For tab context, currTab is the clicked tab
             if (currTab && currTab.url) {
-                updateClipboard(deco(currTab.url));
+                // Check for Shift or Ctrl as modifier
+                var style = oPrefs.clickplain;
+                if (menuInfo.modifiers){
+                    if (menuInfo.modifiers.includes('Shift')){
+                        style = oPrefs.clickshift;
+                    } else if (menuInfo.modifiers.includes('Ctrl')){
+                        style = oPrefs.clickctrl;
+                    }
+                }
+                // Set up text for copying
+                if (style == 'html'){
+                    var txt = '<a href="' + deco(currTab.url) + '">' + currTab.title + '</a>';
+                } else if (style == 'markdown'){
+                    var txt = '[' + currTab.title + '](' + deco(currTab.url) + ')';
+                } else {
+                    txt = deco(currTab.url);
+                }
+                updateClipboard(txt);
             }
             break;
         case 'copy-page-url':

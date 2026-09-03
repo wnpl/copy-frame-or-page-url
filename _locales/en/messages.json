@@ -43,6 +43,10 @@
     "message": "Copy decoded link",
     "description": "Context menu item for copying a decoded link URL"
   },
+  "menuCopyTabUrl": {
+    "message": "Copy link to tab",
+    "description": "Context menu item for copying the tab URL"
+  },
   "optionAllPages": {
     "message": "Show context menu item on all pages, framed or not",
     "description": "Option to show the context menu on all pages"

@@ -74,6 +74,12 @@ let linkmenu = browser.menus.create({
     contexts: ["link"]
 });
 
+let tabmenu = browser.menus.create({
+    id: "copy-tab-url",
+    title: browser.i18n.getMessage("menuCopyTabUrl"),
+    contexts: ["tab"]
+});
+
 browser.menus.onClicked.addListener((menuInfo, currTab) => {
     switch (menuInfo.menuItemId) {
         case 'copy-decode-url':
@@ -82,6 +88,14 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
         case 'copy-frame-url':
             // Copy to clipboard
             updateClipboard(deco(menuInfo.frameUrl));
+            break;
+        case 'copy-tab-url':
+            // Copy tab URL without opening the tab
+            browser.tabs.get(menuInfo.tabId).then((tab) => {
+                updateClipboard(deco(tab.url));
+            }).catch((err) => {
+                console.log('Error getting tab:', err);
+            });
             break;
         case 'copy-page-url':
             // Check for Shift or Ctrl as modifier

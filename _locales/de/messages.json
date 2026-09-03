@@ -39,6 +39,10 @@
     "message": "Frame-Link kopieren",
     "description": "Kontextmenü-Eintrag zum Kopieren der Frame-URL"
   },
+  "menuCopyTabUrl": {
+    "message": "Link zum Tab kopieren",
+    "description": "Kontextmenü-Eintrag zum Kopieren der Tab-URL"
+  },
   "menuCopyDecodeUrl": {
     "message": "Dekodierten Link kopieren",
     "description": "Kontextmenü-Eintrag zum Kopieren einer dekodierten Link-URL"

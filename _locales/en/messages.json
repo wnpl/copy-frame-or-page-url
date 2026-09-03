@@ -60,7 +60,7 @@
     "description": "Option to decode Unicode in URLs"
   },
   "optionShowTabMenu": {
-    "message": "Show \"Copy link to tab\" in context menu of tabs",
+    "message": "Show \"Copy tab link\" in context menu of tabs",
     "description": "Option"
   },
   "formatUrl": {

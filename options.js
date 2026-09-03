@@ -46,9 +46,7 @@ browser.runtime.sendMessage({
 	browser.runtime.getPlatformInfo().then((platform) => {
 		var ctrlLabel = document.getElementById('ctrl-label');
 		if (ctrlLabel) {
-			ctrlLabel.textContent = browser.i18n.getMessage(
-				platform.os === "mac" ? "labelClickCtrlMac" : "labelClickCtrl"
-			);
+			ctrlLabel.textContent = (platform.os === "mac") ? "\u2318 + Klick:" : "\u2303 + Klick:";
 		}
 	}).catch((err) => {
 		console.log('Problem getting platform info: '+err.message);

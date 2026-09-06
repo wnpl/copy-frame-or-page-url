@@ -47,7 +47,8 @@
     {
       "id": "link-storage-sidebar",
       "name": "__MSG_sidebarName__",
-      "entry_point": "sidebar.html"
+      "entry_point": "sidebar.html",
+      "open_at_install": false
     }
   ],
   "action": {

@@ -32,10 +32,10 @@ async function showSuccessFeedback() {
         setTimeout(async () => {
             await browser.action.setIcon({
                 path: {
-                    16: iconpath,
-                    32: iconpath,
-                    48: iconpath,
-                    64: iconpath
+                    16: 'icons/link-16.svg',
+                    32: 'icons/link-32.svg',
+                    48: 'icons/link-48.svg',
+                    64: 'icons/link-64.svg'
                 }
             });
         }, 1500);

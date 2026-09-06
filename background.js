@@ -14,10 +14,10 @@
 
 /**** Create and populate data structure ****/
 
-// Show visual feedback on toolbar icon
+// Show visual feedback on toolbar and page action icons
 async function showSuccessFeedback() {
     try {
-        // Set success icon (file paths)
+        // Set success icon for action (toolbar)
         await browser.action.setIcon({
             path: {
                 "16": "icons/checkmark-16.svg",
@@ -27,9 +27,28 @@ async function showSuccessFeedback() {
             }
         });
         
-        // Reset to original icon after 1.5 seconds
+        // Set success icon for pageAction (address bar)
+        await browser.pageAction.setIcon({
+            path: {
+                "16": "icons/checkmark-16.svg",
+                "32": "icons/checkmark-32.svg",
+                "48": "icons/checkmark-48.svg",
+                "64": "icons/checkmark-64.svg"
+            }
+        });
+        
+        // Reset to original icons after 1.5 seconds
         setTimeout(async () => {
             await browser.action.setIcon({
+                path: {
+                    "16": "icons/link-16.svg",
+                    "32": "icons/link-32.svg",
+                    "48": "icons/link-48.svg",
+                    "64": "icons/link-64.svg"
+                }
+            });
+            
+            await browser.pageAction.setIcon({
                 path: {
                     "16": "icons/link-16.svg",
                     "32": "icons/link-32.svg",

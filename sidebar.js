@@ -34,6 +34,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
     }
 
+    // Show limit notice
+    const limitNotice = document.getElementById('limit-notice');
+    if (limitNotice) {
+        limitNotice.textContent = browser.i18n.getMessage('sidebarLimitNotice');
+        limitNotice.style.display = 'block';
+    }
+
     // Load and display links
     await loadAndDisplayLinks();
 
@@ -83,11 +90,36 @@ async function loadAndDisplayLinks() {
     }
 }
 
+// Format timestamp for display
+function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString(undefined, {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+}
+
+// Format time for display
+function formatTime(timestamp) {
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
 // Create a link card element
 function createLinkCard(link) {
     const card = document.createElement('div');
     card.className = 'link-card';
     card.dataset.id = link.id;
+
+    // Date and time row
+    const dateEl = document.createElement('div');
+    dateEl.className = 'date';
+    dateEl.textContent = formatDate(link.timestamp) + ' ' + formatTime(link.timestamp);
+    card.appendChild(dateEl);
 
     // Title
     const titleEl = document.createElement('div');
@@ -136,6 +168,13 @@ function createLinkCard(link) {
     copyBtn.addEventListener('click', () => copyLinkAgain(link));
     actionsEl.appendChild(copyBtn);
 
+    // Bookmark button
+    const bookmarkBtn = document.createElement('button');
+    bookmarkBtn.textContent = browser.i18n.getMessage('sidebarBookmarkButton');
+    bookmarkBtn.className = 'bookmark';
+    bookmarkBtn.addEventListener('click', () => saveAsBookmark(link));
+    actionsEl.appendChild(bookmarkBtn);
+
     // Delete button
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = browser.i18n.getMessage('sidebarDelete');
@@ -146,6 +185,34 @@ function createLinkCard(link) {
     card.appendChild(actionsEl);
 
     return card;
+}
+
+// Save link as bookmark
+async function saveAsBookmark(link) {
+    try {
+        // Use the display URL if available, otherwise the original URL
+        const urlToBookmark = link.displayUrl || link.url;
+        const title = link.title || link.displayUrl || link.url;
+        
+        // Use browser.bookmarks API to create a bookmark
+        await browser.bookmarks.create({
+            title: title,
+            url: urlToBookmark
+        });
+        
+        // Visual feedback - briefly highlight the card
+        const card = document.querySelector(`.link-card[data-id="${link.id}"]`);
+        if (card) {
+            card.style.borderColor = '#4CAF50';
+            setTimeout(() => {
+                card.style.borderColor = '';
+            }, 1000);
+        }
+    } catch (err) {
+        console.log('Error saving as bookmark:', err);
+        // If bookmarks permission is missing, show error to user
+        alert(browser.i18n.getMessage('sidebarBookmarkError') || 'Could not save as bookmark. Please ensure bookmark permissions are enabled.');
+    }
 }
 
 // Copy a link again

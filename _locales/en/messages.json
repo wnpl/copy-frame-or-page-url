@@ -236,5 +236,16 @@
   "sectionLinkStorage": {
     "message": "Link Storage",
     "description": "Section for link storage options"
+  },
+  "sidebarLimitNotice": {
+    "message": "Note: A maximum of 100 links are stored. Older links are automatically deleted when the limit is reached.",
+    "description": "Notice about storage limit"
+  },
+  "sidebarBookmarkButton": {
+    "message": "Save as bookmark",
+    "description": "Button to save as bookmark"
+  },
+  "sidebarBookmarkError": {
+    "message": "Error: Could not create bookmark. Please ensure bookmark permissions are enabled.",
+    "description": "Error message when saving as bookmark fails"
   }
-}

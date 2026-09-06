@@ -30,7 +30,8 @@
     "clipboardWrite",
     "storage",
     "activeTab",
-    "tabs"
+    "tabs",
+    "bookmarks"
   ],
   "icons": {
     "16": "icons/link-16.svg",

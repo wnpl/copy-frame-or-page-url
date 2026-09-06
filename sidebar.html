@@ -117,7 +117,13 @@
     padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+  }
+
+  .link-card .date {
+    font-size: 11px;
+    color: var(--secondary-text);
+    text-align: right;
   }
 
   .link-card .title {
@@ -185,6 +191,11 @@
     border-color: #d32f2f;
   }
 
+  .link-card button.bookmark:hover {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+  }
+
   .clear-all-container {
     display: flex;
     justify-content: center;
@@ -223,6 +234,7 @@
 <body>
 <h1 data-i18n="sidebarTitle"></h1>
 <div class="notice" id="private-notice" style="display: none;"></div>
+<div class="notice" id="limit-notice"></div>
 <div id="link-container">
   <div class="empty-message" id="empty-message" data-i18n="sidebarEmpty"></div>
   <div class="link-list" id="link-list"></div>

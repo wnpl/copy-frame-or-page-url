@@ -14,27 +14,12 @@
 
 /**** Create and populate data structure ****/
 
-// Show visual feedback on toolbar and page action icons
-async function showSuccessFeedback() {
+// Show visual feedback on the clicked icon (action or pageAction)
+async function showSuccessFeedback(source) {
     try {
-        // Set success icon for action (toolbar)
-        await browser.action.setIcon({
-            path: {
-                "16": "icons/checkmark-16.svg",
-                "32": "icons/checkmark-32.svg",
-                "48": "icons/checkmark-48.svg",
-                "64": "icons/checkmark-64.svg"
-            }
-        });
-        
-        // Get current active tab for pageAction
-        const tabs = await browser.tabs.query({ active: true, currentWindow: true });
-        if (tabs.length > 0) {
-            const tabId = tabs[0].id;
-            
-            // Set success icon for pageAction (address bar) - requires tabId
-            await browser.pageAction.setIcon({
-                tabId: tabId,
+        if (source === 'action') {
+            // Set success icon for action (toolbar)
+            await browser.action.setIcon({
                 path: {
                     "16": "icons/checkmark-16.svg",
                     "32": "icons/checkmark-32.svg",
@@ -43,7 +28,7 @@ async function showSuccessFeedback() {
                 }
             });
             
-            // Reset to original icons after 1.5 seconds
+            // Reset to original icon after 1.5 seconds
             setTimeout(async () => {
                 await browser.action.setIcon({
                     path: {
@@ -53,29 +38,37 @@ async function showSuccessFeedback() {
                         "64": "icons/link-64.svg"
                     }
                 });
+            }, 1500);
+        } else if (source === 'pageAction') {
+            // Get current active tab for pageAction
+            const tabs = await browser.tabs.query({ active: true, currentWindow: true });
+            if (tabs.length > 0) {
+                const tabId = tabs[0].id;
                 
+                // Set success icon for pageAction (address bar)
                 await browser.pageAction.setIcon({
                     tabId: tabId,
                     path: {
-                        "16": "icons/link-16.svg",
-                        "32": "icons/link-32.svg",
-                        "48": "icons/link-48.svg",
-                        "64": "icons/link-64.svg"
+                        "16": "icons/checkmark-16.svg",
+                        "32": "icons/checkmark-32.svg",
+                        "48": "icons/checkmark-48.svg",
+                        "64": "icons/checkmark-64.svg"
                     }
                 });
-            }, 1500);
-        } else {
-            // No active tab, just reset action icon
-            setTimeout(async () => {
-                await browser.action.setIcon({
-                    path: {
-                        "16": "icons/link-16.svg",
-                        "32": "icons/link-32.svg",
-                        "48": "icons/link-48.svg",
-                        "64": "icons/link-64.svg"
-                    }
-                });
-            }, 1500);
+                
+                // Reset to original icon after 1.5 seconds
+                setTimeout(async () => {
+                    await browser.pageAction.setIcon({
+                        tabId: tabId,
+                        path: {
+                            "16": "icons/link-16.svg",
+                            "32": "icons/link-32.svg",
+                            "48": "icons/link-48.svg",
+                            "64": "icons/link-64.svg"
+                        }
+                    });
+                }, 1500);
+            }
         }
     } catch (err) {
         console.log('Error showing feedback:', err.message);
@@ -243,7 +236,7 @@ function updateClipboard(txt, title = null, originalUrl = null){
     }
     
     // Show visual feedback on toolbar icon
-    showSuccessFeedback();
+    showSuccessFeedback("action");
 }
 
 // Function to check if current window is private
@@ -435,6 +428,7 @@ browser.pageAction.onClicked.addListener((tab, clickData) => {
         txt = cleanUrl;
     }
     updateClipboard(txt, tab.title, tab.url);
+    showSuccessFeedback("pageAction");
 });
 
 var buttonTitle = '';

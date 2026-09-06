@@ -27,36 +27,56 @@ async function showSuccessFeedback() {
             }
         });
         
-        // Set success icon for pageAction (address bar)
-        await browser.pageAction.setIcon({
-            path: {
-                "16": "icons/checkmark-16.svg",
-                "32": "icons/checkmark-32.svg",
-                "48": "icons/checkmark-48.svg",
-                "64": "icons/checkmark-64.svg"
-            }
-        });
-        
-        // Reset to original icons after 1.5 seconds
-        setTimeout(async () => {
-            await browser.action.setIcon({
+        // Get current active tab for pageAction
+        const tabs = await browser.tabs.query({ active: true, currentWindow: true });
+        if (tabs.length > 0) {
+            const tabId = tabs[0].id;
+            
+            // Set success icon for pageAction (address bar) - requires tabId
+            await browser.pageAction.setIcon({
+                tabId: tabId,
                 path: {
-                    "16": "icons/link-16.svg",
-                    "32": "icons/link-32.svg",
-                    "48": "icons/link-48.svg",
-                    "64": "icons/link-64.svg"
+                    "16": "icons/checkmark-16.svg",
+                    "32": "icons/checkmark-32.svg",
+                    "48": "icons/checkmark-48.svg",
+                    "64": "icons/checkmark-64.svg"
                 }
             });
             
-            await browser.pageAction.setIcon({
-                path: {
-                    "16": "icons/link-16.svg",
-                    "32": "icons/link-32.svg",
-                    "48": "icons/link-48.svg",
-                    "64": "icons/link-64.svg"
-                }
-            });
-        }, 1500);
+            // Reset to original icons after 1.5 seconds
+            setTimeout(async () => {
+                await browser.action.setIcon({
+                    path: {
+                        "16": "icons/link-16.svg",
+                        "32": "icons/link-32.svg",
+                        "48": "icons/link-48.svg",
+                        "64": "icons/link-64.svg"
+                    }
+                });
+                
+                await browser.pageAction.setIcon({
+                    tabId: tabId,
+                    path: {
+                        "16": "icons/link-16.svg",
+                        "32": "icons/link-32.svg",
+                        "48": "icons/link-48.svg",
+                        "64": "icons/link-64.svg"
+                    }
+                });
+            }, 1500);
+        } else {
+            // No active tab, just reset action icon
+            setTimeout(async () => {
+                await browser.action.setIcon({
+                    path: {
+                        "16": "icons/link-16.svg",
+                        "32": "icons/link-32.svg",
+                        "48": "icons/link-48.svg",
+                        "64": "icons/link-64.svg"
+                    }
+                });
+            }, 1500);
+        }
     } catch (err) {
         console.log('Error showing feedback:', err.message);
     }

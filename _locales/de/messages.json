@@ -218,8 +218,32 @@
     "description": "Bestätigungsnachricht zum Löschen aller Links"
   },
   "sidebarCopyAgain": {
-    "message": "Erneut kopieren",
+    "message": "Link kopieren",
     "description": "Button zum erneuten Kopieren eines Links"
+  },
+  "sidebarCopyAgainMarkdown": {
+    "message": "Markdown kopieren",
+    "description": "Button zum erneuten Kopieren als Markdown"
+  },
+  "sidebarCopyAgainHtml": {
+    "message": "HTML kopieren",
+    "description": "Button zum erneuten Kopieren als HTML"
+  },
+  "sidebarCopyTooltipUrl": {
+    "message": "Link kopieren",
+    "description": "Tooltip für Link kopieren"
+  },
+  "sidebarCopyTooltipMarkdown": {
+    "message": "Als Markdown kopieren",
+    "description": "Tooltip für Markdown kopieren"
+  },
+  "sidebarCopyTooltipHtml": {
+    "message": "Als HTML kopieren",
+    "description": "Tooltip für HTML kopieren"
+  },
+  "sidebarBookmarkTooltip": {
+    "message": "Als Lesezeichen speichern",
+    "description": "Tooltip für Lesezeichen speichern"
   },
   "sidebarDelete": {
     "message": "Löschen",
@@ -260,15 +284,17 @@
   "sidebarBookmarkedFeedback": {
     "message": "In \"Weitere Lesezeichen\" gespeichert",
     "description": "Feedback-Nachricht nach dem Speichern als Lesezeichen"
-  }
-
-,
-  "sidebarCopiedFeedback": {
-    "message": "Kopiert!",
-    "description": "Feedback-Nachricht nach dem Kopieren"
   },
-  "sidebarBookmarkedFeedback": {
-    "message": "In \"Weitere Lesezeichen\" gespeichert",
-    "description": "Feedback-Nachricht nach dem Speichern als Lesezeichen"
+  "sidebarCopiedFeedbackUrl": {
+    "message": "Link kopiert",
+    "description": "Feedback-Nachricht nach dem Kopieren einer URL"
+  },
+  "sidebarCopiedFeedbackMarkdown": {
+    "message": "Markdown kopiert",
+    "description": "Feedback-Nachricht nach dem Kopieren als Markdown"
+  },
+  "sidebarCopiedFeedbackHtml": {
+    "message": "HTML kopiert",
+    "description": "Feedback-Nachricht nach dem Kopieren als HTML"
   }
 }

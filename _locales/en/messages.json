@@ -218,8 +218,36 @@
     "description": "Confirmation message for clearing all links"
   },
   "sidebarCopyAgain": {
-    "message": "Copy again",
+    "message": "Copy link",
     "description": "Button to copy a link again"
+  },
+  "sidebarCopyAgainMarkdown": {
+    "message": "Copy as Markdown",
+    "description": "Button to copy a link as Markdown"
+  },
+  "sidebarCopyAgainHtml": {
+    "message": "Copy as HTML",
+    "description": "Button to copy a link as HTML"
+  },
+  "sidebarCopyTooltipUrl": {
+    "message": "Copy link",
+    "description": "Tooltip for copy link"
+  },
+  "sidebarCopyTooltipMarkdown": {
+    "message": "Copy as Markdown",
+    "description": "Tooltip for copy as Markdown"
+  },
+  "sidebarCopyTooltipHtml": {
+    "message": "Copy as HTML",
+    "description": "Tooltip for copy as HTML"
+  },
+  "sidebarBookmarkTooltip": {
+    "message": "Save as bookmark",
+    "description": "Tooltip for save as bookmark"
+  },
+  "sidebarDeleteTooltip": {
+    "message": "Delete",
+    "description": "Tooltip for delete link"
   },
   "sidebarDelete": {
     "message": "Delete",
@@ -252,9 +280,7 @@
   "sidebarSettingsButton": {
     "message": "Settings",
     "description": "Button to open extension settings"
-  }
-
-,
+  },
   "sidebarCopiedFeedback": {
     "message": "Copied!",
     "description": "Feedback message after copying"
@@ -262,5 +288,17 @@
   "sidebarBookmarkedFeedback": {
     "message": "Saved to \"Other Bookmarks\"",
     "description": "Feedback message after saving as bookmark"
+  },
+  "sidebarCopiedFeedbackUrl": {
+    "message": "Link copied",
+    "description": "Feedback message after copying a URL"
+  },
+  "sidebarCopiedFeedbackMarkdown": {
+    "message": "Markdown copied",
+    "description": "Feedback message after copying as markdown"
+  },
+  "sidebarCopiedFeedbackHtml": {
+    "message": "HTML copied",
+    "description": "Feedback message after copying as HTML"
   }
 }

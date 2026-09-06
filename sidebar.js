@@ -1,5 +1,8 @@
 // Sidebar script for Link Storage feature
 
+// Global variable to store preferences
+let oPrefsGlobal = {};
+
 // Initialize the sidebar
 document.addEventListener('DOMContentLoaded', async () => {
     // Set i18n text (skip sidebarTitle as it's rendered by Firefox UI)
@@ -13,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Get current settings
     const response = await browser.runtime.sendMessage({ get: 'oPrefs' });
-    const oPrefs = response.prefs;
+    oPrefsGlobal = response.prefs;
 
     // Check if we're in a private window
     const isPrivate = await checkPrivateWindow();
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Check if link storage is enabled
-    if (!oPrefs.linkStorage) {
+    if (!oPrefsGlobal.linkStorage) {
         // Link storage is disabled, show empty message
         document.getElementById('empty-message').style.display = 'block';
         document.getElementById('link-list').style.display = 'none';
@@ -109,6 +112,20 @@ function formatTime(timestamp) {
     });
 }
 
+// Get format label for tooltip
+function getFormatLabel(format) {
+    if (format === 'markdown') return browser.i18n.getMessage('sidebarCopyTooltipMarkdown');
+    if (format === 'html') return browser.i18n.getMessage('sidebarCopyTooltipHtml');
+    return browser.i18n.getMessage('sidebarCopyTooltipUrl');
+}
+
+// Get feedback message based on format
+function getFeedbackMessage(format) {
+    if (format === 'markdown') return browser.i18n.getMessage('sidebarCopiedFeedbackMarkdown');
+    if (format === 'html') return browser.i18n.getMessage('sidebarCopiedFeedbackHtml');
+    return browser.i18n.getMessage('sidebarCopiedFeedbackUrl');
+}
+
 // Show feedback message in card
 function showFeedback(card, message, isSuccess = true) {
     // Remove any existing feedback
@@ -140,6 +157,44 @@ function showFeedback(card, message, isSuccess = true) {
             }, 200);
         }, 2000);
     }
+}
+
+// Clean URL using background's cleanAndDeco logic
+function cleanAndDeco(url) {
+    if (!url) return url;
+    
+    // Simple decode
+    let result = url;
+    if (oPrefsGlobal.decode) {
+        try {
+            result = decodeURI(result);
+        } catch (e) {
+            console.log('Error decoding URI:', e);
+        }
+    }
+    
+    // Simple clean (remove tracking params)
+    if (oPrefsGlobal.cleanLinks) {
+        try {
+            // Basic cleaning - remove common tracking parameters
+            const urlObj = new URL(result);
+            const trackingParams = ['utm_', 'fbclid', 'gclid', 'mc_cid', 'mc_eid', 'affiliate', 'campaign', 'source', 'medium'];
+            
+            trackingParams.forEach(param => {
+                for (const key of urlObj.searchParams.keys()) {
+                    if (key.includes(param)) {
+                        urlObj.searchParams.delete(key);
+                    }
+                }
+            });
+            
+            result = urlObj.toString();
+        } catch (e) {
+            console.log('Error cleaning URL:', e);
+        }
+    }
+    
+    return result;
 }
 
 // Create a link card element
@@ -198,24 +253,34 @@ function createLinkCard(link) {
     // Copy again button with icon
     const copyBtn = document.createElement('button');
     copyBtn.className = 'copy';
-    copyBtn.innerHTML = '<img src="icons/copy-16.svg" alt="' + browser.i18n.getMessage('sidebarCopyAgain') + '">';
-    copyBtn.title = browser.i18n.getMessage('sidebarCopyAgain');
-    copyBtn.addEventListener('click', () => copyLinkAgain(link));
+    copyBtn.innerHTML = '<img src="icons/copy-16.svg" alt="' + getFormatLabel(oPrefsGlobal.clickplain) + '">';
+    copyBtn.title = getFormatLabel(oPrefsGlobal.clickplain);
+    copyBtn.addEventListener('click', (event) => {
+        // Check for modifier keys
+        const format = oPrefsGlobal.clickplain;
+        if (event.shiftKey && oPrefsGlobal.clickshift !== oPrefsGlobal.clickplain) {
+            copyLinkAgain(link, oPrefsGlobal.clickshift);
+        } else if (event.ctrlKey && oPrefsGlobal.clickctrl !== oPrefsGlobal.clickplain) {
+            copyLinkAgain(link, oPrefsGlobal.clickctrl);
+        } else {
+            copyLinkAgain(link, oPrefsGlobal.clickplain);
+        }
+    });
     actionsEl.appendChild(copyBtn);
 
     // Bookmark button with icon
     const bookmarkBtn = document.createElement('button');
     bookmarkBtn.className = 'bookmark';
-    bookmarkBtn.innerHTML = '<img src="icons/bookmark-16.svg" alt="' + browser.i18n.getMessage('sidebarBookmarkButton') + '">';
-    bookmarkBtn.title = browser.i18n.getMessage('sidebarBookmarkButton');
+    bookmarkBtn.innerHTML = '<img src="icons/bookmark-16.svg" alt="' + browser.i18n.getMessage('sidebarBookmarkTooltip') + '">';
+    bookmarkBtn.title = browser.i18n.getMessage('sidebarBookmarkTooltip');
     bookmarkBtn.addEventListener('click', () => saveAsBookmark(link));
     actionsEl.appendChild(bookmarkBtn);
 
     // Delete button with icon
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete';
-    deleteBtn.innerHTML = '<img src="icons/delete-16.svg" alt="' + browser.i18n.getMessage('sidebarDelete') + '">';
-    deleteBtn.title = browser.i18n.getMessage('sidebarDelete');
+    deleteBtn.innerHTML = '<img src="icons/delete-16.svg" alt="' + browser.i18n.getMessage('sidebarDeleteTooltip') + '">';
+    deleteBtn.title = browser.i18n.getMessage('sidebarDeleteTooltip');
     deleteBtn.addEventListener('click', () => deleteLink(link.id));
     actionsEl.appendChild(deleteBtn);
 
@@ -252,17 +317,28 @@ async function saveAsBookmark(link) {
     }
 }
 
-// Copy a link again
-async function copyLinkAgain(link) {
+// Copy a link again with specified format
+async function copyLinkAgain(link, format = null) {
     try {
-        // Use the display URL if available, otherwise the original URL
-        const urlToCopy = link.displayUrl || link.url;
-        await navigator.clipboard.writeText(urlToCopy);
+        const effectiveFormat = format || oPrefsGlobal.clickplain;
+        const url = cleanAndDeco(link.displayUrl || link.url);
+        const title = link.title || link.displayUrl || link.url;
         
-        // Show feedback message
+        let textToCopy;
+        if (effectiveFormat === 'html') {
+            textToCopy = '<a href="' + url + '">' + title + '</a>';
+        } else if (effectiveFormat === 'markdown') {
+            textToCopy = '[' + title + '](' + url + ')';
+        } else {
+            textToCopy = url;
+        }
+        
+        await navigator.clipboard.writeText(textToCopy);
+        
+        // Show appropriate feedback message
         const card = document.querySelector(`.link-card[data-id="${link.id}"]`);
         if (card) {
-            showFeedback(card, browser.i18n.getMessage('sidebarCopiedFeedback'), true);
+            showFeedback(card, getFeedbackMessage(effectiveFormat), true);
         }
     } catch (err) {
         console.log('Error copying link:', err);

@@ -162,23 +162,27 @@ function createLinkCard(link) {
     const actionsEl = document.createElement('div');
     actionsEl.className = 'actions';
 
-    // Copy again button
+    // Copy again button with icon
     const copyBtn = document.createElement('button');
-    copyBtn.textContent = browser.i18n.getMessage('sidebarCopyAgain');
+    copyBtn.className = 'copy';
+    copyBtn.innerHTML = '<img src="icons/copy-16.svg" alt="' + browser.i18n.getMessage('sidebarCopyAgain') + '">';
+    copyBtn.title = browser.i18n.getMessage('sidebarCopyAgain');
     copyBtn.addEventListener('click', () => copyLinkAgain(link));
     actionsEl.appendChild(copyBtn);
 
-    // Bookmark button
+    // Bookmark button with icon
     const bookmarkBtn = document.createElement('button');
-    bookmarkBtn.textContent = browser.i18n.getMessage('sidebarBookmarkButton');
     bookmarkBtn.className = 'bookmark';
+    bookmarkBtn.innerHTML = '<img src="icons/bookmark-16.svg" alt="' + browser.i18n.getMessage('sidebarBookmarkButton') + '">';
+    bookmarkBtn.title = browser.i18n.getMessage('sidebarBookmarkButton');
     bookmarkBtn.addEventListener('click', () => saveAsBookmark(link));
     actionsEl.appendChild(bookmarkBtn);
 
-    // Delete button
+    // Delete button with icon
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = browser.i18n.getMessage('sidebarDelete');
     deleteBtn.className = 'delete';
+    deleteBtn.innerHTML = '<img src="icons/delete-16.svg" alt="' + browser.i18n.getMessage('sidebarDelete') + '">';
+    deleteBtn.title = browser.i18n.getMessage('sidebarDelete');
     deleteBtn.addEventListener('click', () => deleteLink(link.id));
     actionsEl.appendChild(deleteBtn);
 

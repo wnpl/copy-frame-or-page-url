@@ -78,14 +78,6 @@
     min-width: 300px;
   }
 
-  h1 {
-    font-size: 18px;
-    margin: 0 0 16px 0;
-    color: var(--text);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 8px;
-  }
-
   .notice {
     color: var(--secondary-text);
     font-size: 13px;
@@ -163,37 +155,43 @@
 
   .link-card .actions {
     display: flex;
-    gap: 8px;
+    gap: 4px;
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
   .link-card button {
-    font-family: inherit;
-    font-size: 12px;
-    padding: 4px 8px;
-    border: 1px solid var(--border);
+    padding: 4px;
+    border: none;
     border-radius: 4px;
-    background-color: var(--field-bg);
-    color: var(--text);
+    background-color: transparent;
     cursor: pointer;
-    flex: 1;
-    min-width: 80px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .link-card button:hover {
-    background-color: var(--accent);
-    color: white;
-    border-color: var(--accent);
+    background-color: var(--card-bg);
+  }
+
+  .link-card button img {
+    width: 16px;
+    height: 16px;
   }
 
   .link-card button.delete:hover {
-    background-color: #d32f2f;
-    border-color: #d32f2f;
+    background-color: rgba(211, 47, 47, 0.1);
   }
 
   .link-card button.bookmark:hover {
-    background-color: #4CAF50;
-    border-color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+  }
+
+  .link-card button.copy:hover {
+    background-color: rgba(0, 96, 223, 0.1);
   }
 
   .clear-all-container {

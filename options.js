@@ -30,8 +30,14 @@ browser.runtime.sendMessage({
 	// Checkboxes
 	var chks = document.querySelectorAll('.chk input[type="checkbox"]');
 	for (var i=0; i<chks.length; i++){
-		if (oSettings[chks[i].name] == true) chks[i].checked = true;
-		else chks[i].checked = false;
+		// Handle linkStorage default (enabled by default)
+		if (chks[i].name === 'linkStorage' && oSettings[chks[i].name] === undefined) {
+			chks[i].checked = true;
+		} else if (oSettings[chks[i].name] == true) {
+			chks[i].checked = true;
+		} else {
+			chks[i].checked = false;
+		}
 	}
 	// Selects
 	var sels = document.querySelectorAll('select[name^="click"]');

@@ -24,7 +24,8 @@ var oPrefs = {
     decode: true,           // Option to decode Unicode URLs
     showtabmenu: true,       // Show context menu item for tabs
     cleanLinks: false,       // Clean links (remove tracking parameters) before copying
-    amazonId: ''            // Amazon affiliate ID (empty for now, not user-configurable)
+    amazonId: '',            // Amazon affiliate ID (empty for now, not user-configurable)
+    linkStorage: true        // Enable link storage feature (default: on)
 };
 let pagemenu;
 let tabmenu;
@@ -102,11 +103,11 @@ let linkmenu = browser.menus.create({
 browser.menus.onClicked.addListener((menuInfo, currTab) => {
     switch (menuInfo.menuItemId) {
         case 'copy-decode-url':
-            updateClipboard(cleanAndDeco(menuInfo.linkUrl));
+            updateClipboard(cleanAndDeco(menuInfo.linkUrl), menuInfo.linkText, menuInfo.linkUrl);
             break;
         case 'copy-frame-url':
             // Copy to clipboard
-            updateClipboard(cleanAndDeco(menuInfo.frameUrl));
+            updateClipboard(cleanAndDeco(menuInfo.frameUrl), null, menuInfo.frameUrl);
             break;
         case 'copy-tab-url':
             // Copy tab URL without opening the tab
@@ -122,14 +123,15 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
                     }
                 }
                 // Set up text for copying
+                var cleanUrl = cleanAndDeco(currTab.url);
                 if (style == 'html'){
-                    var txt = '<a href="' + cleanAndDeco(currTab.url) + '">' + currTab.title + '</a>';
+                    var txt = '<a href="' + cleanUrl + '">' + currTab.title + '</a>';
                 } else if (style == 'markdown'){
-                    var txt = '[' + currTab.title + '](' + cleanAndDeco(currTab.url) + ')';
+                    var txt = '[' + currTab.title + '](' + cleanUrl + ')';
                 } else {
-                    txt = cleanAndDeco(currTab.url);
+                    txt = cleanUrl;
                 }
-                updateClipboard(txt);
+                updateClipboard(txt, currTab.title, currTab.url);
             }
             break;
         case 'copy-page-url':
@@ -143,25 +145,89 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
                 }
             }
             // Set up text for copying
+            var cleanUrl = cleanAndDeco(currTab.url);
             if (style == 'html'){
-                var txt = '<a href="' + cleanAndDeco(currTab.url) + '">' + currTab.title + '</a>';
+                var txt = '<a href="' + cleanUrl + '">' + currTab.title + '</a>';
             } else if (style == 'markdown'){
-                var txt = '[' + currTab.title + '](' + cleanAndDeco(currTab.url) + ')';
+                var txt = '[' + currTab.title + '](' + cleanUrl + ')';
             } else {
                 txt = cleanAndDeco(menuInfo.pageUrl);
             }
-            updateClipboard(txt);
+            updateClipboard(txt, currTab.title, currTab.url);
             break;
         default:
             // WTF?
     }
 });
 
-function updateClipboard(txt){
+function updateClipboard(txt, title = null, originalUrl = null){
     // Copy to clipboard
     navigator.clipboard.writeText(txt).catch((err) => {
         console.log(browser.i18n.getMessage("errorClipboardWrite", err.message));
     });
+    
+    // Store link if linkStorage is enabled and we're not in a private window
+    if (oPrefs.linkStorage) {
+        storeLinkInHistory(txt, title, originalUrl);
+    }
+}
+
+// Function to check if current window is private
+async function isPrivateWindow() {
+    try {
+        const tabs = await browser.tabs.query({ active: true, currentWindow: true });
+        if (tabs.length > 0) {
+            const windowInfo = await browser.windows.get(tabs[0].windowId);
+            return windowInfo.incognito || false;
+        }
+        return false;
+    } catch (err) {
+        console.log('Error checking private window status:', err.message);
+        return false;
+    }
+}
+
+// Store a link in the link storage history
+async function storeLinkInHistory(displayUrl, title, originalUrl) {
+    // Don't store in private windows
+    const isPrivate = await isPrivateWindow();
+    if (isPrivate) {
+        return;
+    }
+    
+    try {
+        // Get current links from storage
+        const result = await browser.storage.local.get('linkStorage');
+        const links = result.linkStorage || [];
+        
+        // Create new link object
+        const newLink = {
+            id: generateId(),
+            url: displayUrl,
+            displayUrl: displayUrl,
+            originalUrl: originalUrl || displayUrl,
+            title: title || '',
+            timestamp: Date.now()
+        };
+        
+        // Add to beginning of array (newest first)
+        links.unshift(newLink);
+        
+        // Keep only the last 100 links to prevent storage bloat
+        if (links.length > 100) {
+            links.pop();
+        }
+        
+        // Save back to storage
+        await browser.storage.local.set({ linkStorage: links });
+    } catch (err) {
+        console.log('Error storing link in history:', err.message);
+    }
+}
+
+// Generate a unique ID for links
+function generateId() {
+    return Date.now().toString(36) + Math.random().toString(36).substring(2);
 }
 
 function deco(urltxt){ // version 1.3
@@ -217,14 +283,15 @@ browser.action.onClicked.addListener((tab, clickData) => {
         }
     }
     // Set up text for copying
+    var cleanUrl = cleanAndDeco(tab.url);
     if (style == 'html'){
-        var txt = '<a href="' + cleanAndDeco(tab.url) + '">' + tab.title + '</a>';
+        var txt = '<a href="' + cleanUrl + '">' + tab.title + '</a>';
     } else if (style == 'markdown'){
-        var txt = '[' + tab.title + '](' + cleanAndDeco(tab.url) + ')';
+        var txt = '[' + tab.title + '](' + cleanUrl + ')';
     } else {
-        txt = cleanAndDeco(tab.url);
+        txt = cleanUrl;
     }
-    updateClipboard(txt);
+    updateClipboard(txt, tab.title, tab.url);
 });
 
 browser.commands.onCommand.addListener((strName) => {
@@ -233,7 +300,7 @@ browser.commands.onCommand.addListener((strName) => {
             active: true,
             currentWindow: true
         }).then((currTab) => {
-            updateClipboard(cleanAndDeco(currTab[0].url));
+            updateClipboard(cleanAndDeco(currTab[0].url), currTab[0].title, currTab[0].url);
         }).catch((err) => {
             console.log(err);
         });
@@ -242,7 +309,8 @@ browser.commands.onCommand.addListener((strName) => {
             active: true,
             currentWindow: true
         }).then((currTab) => {
-            updateClipboard('[' + currTab[0].title + '](' + cleanAndDeco(currTab[0].url) + ')');
+            var cleanUrl = cleanAndDeco(currTab[0].url);
+            updateClipboard('[' + currTab[0].title + '](' + cleanUrl + ')', currTab[0].title, currTab[0].url);
         }).catch((err) => {
             console.log(err);
         });
@@ -251,7 +319,8 @@ browser.commands.onCommand.addListener((strName) => {
             active: true,
             currentWindow: true
         }).then((currTab) => {
-            updateClipboard('<a href="' + cleanAndDeco(currTab[0].url) + '">' + currTab[0].title + '</a>');
+            var cleanUrl = cleanAndDeco(currTab[0].url);
+            updateClipboard('<a href="' + cleanUrl + '">' + currTab[0].title + '</a>', currTab[0].title, currTab[0].url);
         }).catch((err) => {
             console.log(err);
         });
@@ -283,14 +352,15 @@ browser.pageAction.onClicked.addListener((tab, clickData) => {
         }
     }
     // Set up text for copying
+    var cleanUrl = cleanAndDeco(tab.url);
     if (style == 'html'){
-        var txt = '<a href="' + cleanAndDeco(tab.url) + '">' + tab.title + '</a>';
+        var txt = '<a href="' + cleanUrl + '">' + tab.title + '</a>';
     } else if (style == 'markdown'){
-        var txt = '[' + tab.title + '](' + cleanAndDeco(tab.url) + ')';
+        var txt = '[' + tab.title + '](' + cleanUrl + ')';
     } else {
-        txt = cleanAndDeco(tab.url);
+        txt = cleanUrl;
     }
-    updateClipboard(txt);
+    updateClipboard(txt, tab.title, tab.url);
 });
 
 var buttonTitle = '';
@@ -365,6 +435,7 @@ function handleMessage(request, sender, sendResponse){
         oPrefs.decode = oSettings.decode;
         oPrefs.showtabmenu = oSettings.showtabmenu;
         oPrefs.cleanLinks = oSettings.cleanLinks;
+        oPrefs.linkStorage = oSettings.linkStorage;
         // amazonId is fixed to 'wnpl-21' and not user-configurable
         // Check for Page Action changes
         if (oSettings.pageaction == true && oPrefs.pageaction == false){

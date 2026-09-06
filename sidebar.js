@@ -79,7 +79,7 @@ async function loadAndDisplayLinks() {
         
         emptyMessage.style.display = 'none';
         linkList.style.display = 'flex';
-        linkList.innerHTML = '';
+        while (linkList.firstChild) { linkList.removeChild(linkList.firstChild); }
         
         // Sort links by timestamp (newest first)
         links.sort((a, b) => b.timestamp - a.timestamp);
@@ -253,7 +253,10 @@ function createLinkCard(link) {
     // Copy again button with icon
     const copyBtn = document.createElement('button');
     copyBtn.className = 'copy';
-    copyBtn.innerHTML = '<img src="icons/copy-16.svg" alt="' + getFormatLabel(oPrefsGlobal.clickplain) + '">';
+    const copyImg = document.createElement('img');
+    copyImg.src = 'icons/copy-16.svg';
+    copyImg.alt = getFormatLabel(oPrefsGlobal.clickplain);
+    copyBtn.appendChild(copyImg);
     copyBtn.title = getFormatLabel(oPrefsGlobal.clickplain);
     copyBtn.addEventListener('click', (event) => {
         // Check for modifier keys
@@ -271,7 +274,10 @@ function createLinkCard(link) {
     // Bookmark button with icon
     const bookmarkBtn = document.createElement('button');
     bookmarkBtn.className = 'bookmark';
-    bookmarkBtn.innerHTML = '<img src="icons/bookmark-16.svg" alt="' + browser.i18n.getMessage('sidebarBookmarkTooltip') + '">';
+    const bookmarkImg = document.createElement('img');
+    bookmarkImg.src = 'icons/bookmark-16.svg';
+    bookmarkImg.alt = browser.i18n.getMessage('sidebarBookmarkTooltip');
+    bookmarkBtn.appendChild(bookmarkImg);
     bookmarkBtn.title = browser.i18n.getMessage('sidebarBookmarkTooltip');
     bookmarkBtn.addEventListener('click', () => saveAsBookmark(link));
     actionsEl.appendChild(bookmarkBtn);
@@ -279,7 +285,10 @@ function createLinkCard(link) {
     // Delete button with icon
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete';
-    deleteBtn.innerHTML = '<img src="icons/delete-16.svg" alt="' + browser.i18n.getMessage('sidebarDeleteTooltip') + '">';
+    const deleteImg = document.createElement('img');
+    deleteImg.src = 'icons/delete-16.svg';
+    deleteImg.alt = browser.i18n.getMessage('sidebarDeleteTooltip');
+    deleteBtn.appendChild(deleteImg);
     deleteBtn.title = browser.i18n.getMessage('sidebarDeleteTooltip');
     deleteBtn.addEventListener('click', () => deleteLink(link.id));
     actionsEl.appendChild(deleteBtn);

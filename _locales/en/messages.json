@@ -99,9 +99,9 @@
     "message": "Action of toolbar button or context menu with modifier keys",
     "description": "Section header"
   },
-  "sectionMiscellaneous": {
-    "message": "Display options",
-    "description": "Section"
+  "sectionInterfaceOptions": {
+    "message": "Interface options",
+    "description": "Section for interface options"
   },
   "sectionKeyboardShortcut": {
     "message": "Tip: Set up optional keyboard shortcut",
@@ -157,7 +157,7 @@
     "message": "URL",
     "description": "URL"
   },
-  "sectionMiscellaneousOptions": {
+  "sectionAdditionalOptions": {
     "message": "Miscellaneous options",
     "description": "Section for various options"
   },

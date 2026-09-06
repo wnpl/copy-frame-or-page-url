@@ -99,9 +99,9 @@
     "message": "Aktion der Toolbar-Schaltfläche oder des Kontextmenüs mit verschiedenen Modifikatortasten",
     "description": "Abschnittsüberschrift"
   },
-  "sectionMiscellaneous": {
-    "message": "Anzeige-Optionen",
-    "description": "Abschnitt"
+  "sectionInterfaceOptions": {
+    "message": "Benutzeroberfläche",
+    "description": "Abschnitt für Benutzeroberflächen-Optionen"
   },
   "sectionKeyboardShortcut": {
     "message": "Tipp: Optionales Tastaturkürzel einrichten",
@@ -157,7 +157,7 @@
     "message": "URL",
     "description": "URL"
   },
-  "sectionMiscellaneousOptions": {
+  "sectionAdditionalOptions": {
     "message": "Verschiedene Optionen",
     "description": "Abschnitt für verschiedene Optionen"
   },

@@ -248,5 +248,9 @@
   "sidebarBookmarkError": {
     "message": "Fehler: Lesezeichen konnte nicht erstellt werden. Bitte stellen Sie sicher, dass die Lesezeichen-Berechtigung aktiviert ist.",
     "description": "Fehlermeldung beim Speichern als Lesezeichen"
+  },
+  "sidebarSettingsButton": {
+    "message": "Einstellungen",
+    "description": "Button zum Öffnen der Extension-Einstellungen"
   }
-}
+

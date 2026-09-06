@@ -265,6 +265,11 @@ function setupEventListeners() {
             await clearAllLinks();
         }
     });
+
+    // Open settings button
+    document.getElementById('open-settings').addEventListener('click', () => {
+        browser.runtime.openOptionsPage();
+    });
 }
 
 // Clear all links

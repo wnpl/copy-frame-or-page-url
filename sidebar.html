@@ -197,6 +197,7 @@
   .clear-all-container {
     display: flex;
     justify-content: center;
+    gap: 8px;
     margin-top: 16px;
     border-top: 1px solid var(--border);
     padding-top: 16px;
@@ -214,8 +215,20 @@
   }
 
   .clear-all-container button:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  .clear-all-container button#clear-all:hover {
     background-color: #d32f2f;
     border-color: #d32f2f;
+    color: white;
+  }
+
+  .clear-all-container button#open-settings:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
     color: white;
   }
 
@@ -238,6 +251,7 @@
 </div>
 <div class="clear-all-container">
   <button id="clear-all" data-i18n="sidebarClearAll"></button>
+  <button id="open-settings" data-i18n="sidebarSettingsButton"></button>
 </div>
 
 <script src="sidebar.js"></script>

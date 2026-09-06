@@ -248,5 +248,9 @@
   "sidebarBookmarkError": {
     "message": "Error: Could not create bookmark. Please ensure bookmark permissions are enabled.",
     "description": "Error message when saving as bookmark fails"
+  },
+  "sidebarSettingsButton": {
+    "message": "Settings",
+    "description": "Button to open extension settings"
   }
-}
+

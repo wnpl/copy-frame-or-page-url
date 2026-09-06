@@ -42,6 +42,14 @@
   "options_ui": {
     "page": "options.html"
   },
+  "sidebars": [
+    {
+      "id": "link-storage-sidebar",
+      "name": "__MSG_sidebarName__",
+      "entry_point": "sidebar.html",
+      "open_at_install": false
+    }
+  ],
   "action": {
     "default_icon": {
       "16": "icons/link-16.svg",

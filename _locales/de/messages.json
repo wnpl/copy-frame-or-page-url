@@ -192,5 +192,49 @@
   "tooltipCopyCleanHtml": {
     "message": "Sauberen Titel+Link als HTML-Link kopieren",
     "description": "Tooltip zum Kopieren des gereinigten Links als HTML"
+  },
+  "sidebarName": {
+    "message": "Link-Speicher",
+    "description": "Name der Sidebar für den Link-Speicher"
+  },
+  "sidebarTitle": {
+    "message": "Link-Speicher",
+    "description": "Titel in der Sidebar"
+  },
+  "sidebarEmpty": {
+    "message": "Keine Links gespeichert.",
+    "description": "Hinweis, wenn keine Links im Speicher sind"
+  },
+  "sidebarPrivateWindowNotice": {
+    "message": "Hinweis: Link-Speicher ist in privaten Fenstern deaktiviert.",
+    "description": "Hinweis für private Fenster"
+  },
+  "sidebarClearAll": {
+    "message": "Alle löschen",
+    "description": "Button zum Löschen aller Links"
+  },
+  "sidebarClearAllConfirm": {
+    "message": "Möchten Sie wirklich alle gespeicherten Links löschen?",
+    "description": "Bestätigungsnachricht zum Löschen aller Links"
+  },
+  "sidebarCopyAgain": {
+    "message": "Erneut kopieren",
+    "description": "Button zum erneuten Kopieren eines Links"
+  },
+  "sidebarDelete": {
+    "message": "Löschen",
+    "description": "Button zum Löschen eines einzelnen Links"
+  },
+  "sidebarOriginalLink": {
+    "message": "Original-Link",
+    "description": "Text für den Link zum Original-Link"
+  },
+  "optionLinkStorage": {
+    "message": "Link-Speicher aktivieren (Links werden im lokalen Speicher gespeichert)",
+    "description": "Option zum Aktivieren/Deaktivieren des Link-Speichers"
+  },
+  "sectionLinkStorage": {
+    "message": "Link-Speicher",
+    "description": "Abschnitt für Link-Speicher-Optionen"
   }
 }

@@ -192,5 +192,49 @@
   "tooltipCopyCleanHtml": {
     "message": "Copy clean title+link as HTML link",
     "description": "Tooltip for copying clean URL as HTML"
+  },
+  "sidebarName": {
+    "message": "Link Storage",
+    "description": "Name of the sidebar for link storage"
+  },
+  "sidebarTitle": {
+    "message": "Link Storage",
+    "description": "Title in the sidebar"
+  },
+  "sidebarEmpty": {
+    "message": "No links stored.",
+    "description": "Notice when no links are stored"
+  },
+  "sidebarPrivateWindowNotice": {
+    "message": "Note: Link storage is disabled in private windows.",
+    "description": "Notice for private windows"
+  },
+  "sidebarClearAll": {
+    "message": "Clear all",
+    "description": "Button to clear all links"
+  },
+  "sidebarClearAllConfirm": {
+    "message": "Are you sure you want to delete all stored links?",
+    "description": "Confirmation message for clearing all links"
+  },
+  "sidebarCopyAgain": {
+    "message": "Copy again",
+    "description": "Button to copy a link again"
+  },
+  "sidebarDelete": {
+    "message": "Delete",
+    "description": "Button to delete a single link"
+  },
+  "sidebarOriginalLink": {
+    "message": "Original link",
+    "description": "Text for the original link"
+  },
+  "optionLinkStorage": {
+    "message": "Enable link storage (links are stored in local storage)",
+    "description": "Option to enable/disable link storage"
+  },
+  "sectionLinkStorage": {
+    "message": "Link Storage",
+    "description": "Section for link storage options"
   }
 }

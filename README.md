@@ -12,6 +12,7 @@ A Firefox WebExtension that lets you quickly copy URLs from frames, links, or th
 - **Multiple Formats**: Choose between plain URL, Markdown (`[title](url)`), or HTML (`<a href="url">title</a>`)
 - **Modifier Key Support**: Use Shift+click or Ctrl+click (Cmd+click on Mac) on the toolbar button for different formats
 - **Unicode Decoding**: Option to decode Unicode characters in URLs (e.g., 茶 instead of `%E8%8C%B6`)
+- **Link Cleaning**: Option to clean links by removing tracking parameters (UTM, fbclid, etc.) using [link-cleaner-js](https://github.com/corbindavenport/link-cleaner-js)
 - **Address Bar Button**: Optional button in the address bar (page action)
 - **Keyboard Shortcuts**: Configurable keyboard shortcuts for quick access
 
@@ -179,3 +180,4 @@ This project is based on the original work by Jefferson "jscher2000" Scher, lice
 - Fork with right-click custom context menu and decoded URL support by [Hamada Masatoshi](https://github.com/HamadaMasatoshi/copy-frame-or-page-url)
 - Manifest V3 migration, icon refresh, and dark mode styling by [Stefan Winopal](https://github.com/wnpl)
 - Icons from [FirefoxUX/acorn-icons](https://github.com/FirefoxUX/acorn-icons) (MPL-2.0)
+- Link cleaning functionality provided by [link-cleaner-js](https://github.com/corbindavenport/link-cleaner-js) by Corbin Davenport

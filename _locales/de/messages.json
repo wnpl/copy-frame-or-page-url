@@ -160,5 +160,37 @@
   "sectionMiscellaneousOptions": {
     "message": "Verschiedene Optionen",
     "description": "Abschnitt für verschiedene Optionen"
+  },
+  "optionCleanLinks": {
+    "message": "Links vor dem Kopieren säubern (Tracking-Parameter entfernen)",
+    "description": "Option zum Säubern von URLs vor dem Kopieren"
+  },
+  "menuCopyCleanPageUrl": {
+    "message": "Sauberen Seiten-Link kopieren",
+    "description": "Kontextmenü-Eintrag zum Kopieren der gereinigten Seiten-URL"
+  },
+  "menuCopyCleanFrameUrl": {
+    "message": "Sauberen Frame-Link kopieren",
+    "description": "Kontextmenü-Eintrag zum Kopieren eines gereinigten Frame-Links"
+  },
+  "menuCopyCleanDecodeUrl": {
+    "message": "Sauberen dekodierten Link kopieren",
+    "description": "Kontextmenü-Eintrag zum Kopieren eines gereinigten dekodierten Links"
+  },
+  "menuCopyCleanTabUrl": {
+    "message": "Sauberen Tab-Link kopieren",
+    "description": "Kontextmenü-Eintrag zum Kopieren des gereinigten Tab-Links"
+  },
+  "tooltipCopyCleanUrl": {
+    "message": "Sauberen aktuellen Seiten-Link kopieren",
+    "description": "Tooltip zum Kopieren des gereinigten Seiten-Links"
+  },
+  "tooltipCopyCleanMarkdown": {
+    "message": "Sauberen Titel+Link als Markdown kopieren",
+    "description": "Tooltip zum Kopieren des gereinigten Links als Markdown"
+  },
+  "tooltipCopyCleanHtml": {
+    "message": "Sauberen Titel+Link als HTML-Link kopieren",
+    "description": "Tooltip zum Kopieren des gereinigten Links als HTML"
   }
 }

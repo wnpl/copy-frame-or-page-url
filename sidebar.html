@@ -110,6 +110,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    position: relative;
   }
 
   .link-card .date {
@@ -158,6 +159,33 @@
     gap: 4px;
     flex-wrap: wrap;
     justify-content: flex-end;
+    position: relative;
+  }
+
+  .link-card .feedback {
+    position: absolute;
+    left: 0;
+    top: -20px;
+    font-size: 11px;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .link-card .feedback.visible {
+    opacity: 1;
+  }
+
+  .link-card .feedback.success {
+    background-color: #4CAF50;
+  }
+
+  .link-card .feedback.error {
+    background-color: #d32f2f;
   }
 
   .link-card button {

@@ -254,3 +254,13 @@
     "description": "Button to open extension settings"
   }
 
+,
+  "sidebarCopiedFeedback": {
+    "message": "Copied!",
+    "description": "Feedback message after copying"
+  },
+  "sidebarBookmarkedFeedback": {
+    "message": "Saved to \"Other Bookmarks\"",
+    "description": "Feedback message after saving as bookmark"
+  }
+}

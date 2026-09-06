@@ -252,5 +252,23 @@
   "sidebarSettingsButton": {
     "message": "Einstellungen",
     "description": "Button zum Öffnen der Extension-Einstellungen"
+  },
+  "sidebarCopiedFeedback": {
+    "message": "Kopiert!",
+    "description": "Feedback-Nachricht nach dem Kopieren"
+  },
+  "sidebarBookmarkedFeedback": {
+    "message": "In \"Weitere Lesezeichen\" gespeichert",
+    "description": "Feedback-Nachricht nach dem Speichern als Lesezeichen"
   }
 
+,
+  "sidebarCopiedFeedback": {
+    "message": "Kopiert!",
+    "description": "Feedback-Nachricht nach dem Kopieren"
+  },
+  "sidebarBookmarkedFeedback": {
+    "message": "In \"Weitere Lesezeichen\" gespeichert",
+    "description": "Feedback-Nachricht nach dem Speichern als Lesezeichen"
+  }
+}

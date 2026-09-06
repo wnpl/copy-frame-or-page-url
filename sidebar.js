@@ -109,6 +109,39 @@ function formatTime(timestamp) {
     });
 }
 
+// Show feedback message in card
+function showFeedback(card, message, isSuccess = true) {
+    // Remove any existing feedback
+    const existingFeedback = card.querySelector('.feedback');
+    if (existingFeedback) {
+        existingFeedback.remove();
+    }
+    
+    // Create feedback element
+    const feedbackEl = document.createElement('div');
+    feedbackEl.className = 'feedback ' + (isSuccess ? 'success' : 'error');
+    feedbackEl.textContent = message;
+    
+    // Position it in the actions container
+    const actionsEl = card.querySelector('.actions');
+    if (actionsEl) {
+        actionsEl.appendChild(feedbackEl);
+        
+        // Make it visible
+        setTimeout(() => {
+            feedbackEl.classList.add('visible');
+        }, 10);
+        
+        // Hide and remove after 2 seconds
+        setTimeout(() => {
+            feedbackEl.classList.remove('visible');
+            setTimeout(() => {
+                feedbackEl.remove();
+            }, 200);
+        }, 2000);
+    }
+}
+
 // Create a link card element
 function createLinkCard(link) {
     const card = document.createElement('div');
@@ -204,18 +237,18 @@ async function saveAsBookmark(link) {
             url: urlToBookmark
         });
         
-        // Visual feedback - briefly highlight the card
+        // Show feedback message
         const card = document.querySelector(`.link-card[data-id="${link.id}"]`);
         if (card) {
-            card.style.borderColor = '#4CAF50';
-            setTimeout(() => {
-                card.style.borderColor = '';
-            }, 1000);
+            showFeedback(card, browser.i18n.getMessage('sidebarBookmarkedFeedback'), true);
         }
     } catch (err) {
         console.log('Error saving as bookmark:', err);
-        // If bookmarks permission is missing, show error to user
-        alert(browser.i18n.getMessage('sidebarBookmarkError') || 'Could not save as bookmark. Please ensure bookmark permissions are enabled.');
+        // Show error feedback
+        const card = document.querySelector(`.link-card[data-id="${link.id}"]`);
+        if (card) {
+            showFeedback(card, browser.i18n.getMessage('sidebarBookmarkError'), false);
+        }
     }
 }
 
@@ -225,16 +258,19 @@ async function copyLinkAgain(link) {
         // Use the display URL if available, otherwise the original URL
         const urlToCopy = link.displayUrl || link.url;
         await navigator.clipboard.writeText(urlToCopy);
-        // Visual feedback - briefly highlight the card
+        
+        // Show feedback message
         const card = document.querySelector(`.link-card[data-id="${link.id}"]`);
         if (card) {
-            card.style.borderColor = '#0060df';
-            setTimeout(() => {
-                card.style.borderColor = '';
-            }, 1000);
+            showFeedback(card, browser.i18n.getMessage('sidebarCopiedFeedback'), true);
         }
     } catch (err) {
         console.log('Error copying link:', err);
+        // Show error feedback
+        const card = document.querySelector(`.link-card[data-id="${link.id}"]`);
+        if (card) {
+            showFeedback(card, 'Error copying', false);
+        }
     }
 }
 

@@ -224,7 +224,7 @@ browser.menus.onClicked.addListener((menuInfo, currTab) => {
     }
 });
 
-function updateClipboard(txt, title = null, originalUrl = null){
+function updateClipboard(txt, title = null, originalUrl = null, source = "action"){
     // Copy to clipboard
     navigator.clipboard.writeText(txt).catch((err) => {
         console.log(browser.i18n.getMessage("errorClipboardWrite", err.message));
@@ -235,8 +235,8 @@ function updateClipboard(txt, title = null, originalUrl = null){
         storeLinkInHistory(txt, title, originalUrl);
     }
     
-    // Show visual feedback on toolbar icon
-    showSuccessFeedback("action");
+    // Show visual feedback on the clicked icon
+    showSuccessFeedback(source);
 }
 
 // Function to check if current window is private
@@ -427,8 +427,7 @@ browser.pageAction.onClicked.addListener((tab, clickData) => {
     } else {
         txt = cleanUrl;
     }
-    updateClipboard(txt, tab.title, tab.url);
-    showSuccessFeedback("pageAction");
+    updateClipboard(txt, tab.title, tab.url, "pageAction");
 });
 
 var buttonTitle = '';

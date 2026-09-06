@@ -99,9 +99,9 @@
     "message": "Action of toolbar button or context menu with modifier keys",
     "description": "Section header"
   },
-  "sectionMiscellaneous": {
-    "message": "Display options",
-    "description": "Section"
+  "sectionInterfaceOptions": {
+    "message": "Interface options",
+    "description": "Section for interface options"
   },
   "sectionKeyboardShortcut": {
     "message": "Tip: Set up optional keyboard shortcut",
@@ -157,7 +157,7 @@
     "message": "URL",
     "description": "URL"
   },
-  "sectionMiscellaneousOptions": {
+  "sectionAdditionalOptions": {
     "message": "Miscellaneous options",
     "description": "Section for various options"
   },
@@ -192,5 +192,113 @@
   "tooltipCopyCleanHtml": {
     "message": "Copy clean title+link as HTML link",
     "description": "Tooltip for copying clean URL as HTML"
+  },
+  "sidebarName": {
+    "message": "Link Storage",
+    "description": "Name of the sidebar for link storage"
+  },
+  "sidebarTitle": {
+    "message": "Link Storage",
+    "description": "Title in the sidebar"
+  },
+  "sidebarEmpty": {
+    "message": "No links stored.",
+    "description": "Notice when no links are stored"
+  },
+  "sidebarPrivateWindowNotice": {
+    "message": "Note: Link storage is disabled in private windows.",
+    "description": "Notice for private windows"
+  },
+  "sidebarClearAll": {
+    "message": "Clear all",
+    "description": "Button to clear all links"
+  },
+  "sidebarClearAllConfirm": {
+    "message": "Are you sure you want to delete all stored links?",
+    "description": "Confirmation message for clearing all links"
+  },
+  "sidebarCopyAgain": {
+    "message": "Copy link",
+    "description": "Button to copy a link again"
+  },
+  "sidebarCopyAgainMarkdown": {
+    "message": "Copy as Markdown",
+    "description": "Button to copy a link as Markdown"
+  },
+  "sidebarCopyAgainHtml": {
+    "message": "Copy as HTML",
+    "description": "Button to copy a link as HTML"
+  },
+  "sidebarCopyTooltipUrl": {
+    "message": "Copy link",
+    "description": "Tooltip for copy link"
+  },
+  "sidebarCopyTooltipMarkdown": {
+    "message": "Copy as Markdown",
+    "description": "Tooltip for copy as Markdown"
+  },
+  "sidebarCopyTooltipHtml": {
+    "message": "Copy as HTML",
+    "description": "Tooltip for copy as HTML"
+  },
+  "sidebarBookmarkTooltip": {
+    "message": "Save as bookmark",
+    "description": "Tooltip for save as bookmark"
+  },
+  "sidebarDeleteTooltip": {
+    "message": "Delete",
+    "description": "Tooltip for delete link"
+  },
+  "sidebarDelete": {
+    "message": "Delete",
+    "description": "Button to delete a single link"
+  },
+  "sidebarOriginalLink": {
+    "message": "Original link",
+    "description": "Text for the original link"
+  },
+  "optionLinkStorage": {
+    "message": "Enable link storage (links are stored in local storage)",
+    "description": "Option to enable/disable link storage"
+  },
+  "sectionLinkStorage": {
+    "message": "Link Storage",
+    "description": "Section for link storage options"
+  },
+  "sidebarLimitNotice": {
+    "message": "Note: A maximum of 100 links are stored. Older links are automatically deleted when the limit is reached.",
+    "description": "Notice about storage limit"
+  },
+  "sidebarBookmarkButton": {
+    "message": "Save as bookmark",
+    "description": "Button to save as bookmark"
+  },
+  "sidebarBookmarkError": {
+    "message": "Error: Could not create bookmark. Please ensure bookmark permissions are enabled.",
+    "description": "Error message when saving as bookmark fails"
+  },
+  "sidebarSettingsButton": {
+    "message": "Settings",
+    "description": "Button to open extension settings"
+  },
+  "sidebarCopiedFeedback": {
+    "message": "Copied!",
+    "description": "Feedback message after copying"
+  },
+  "sidebarBookmarkedFeedback": {
+    "message": "Saved to \"Other Bookmarks\"",
+    "description": "Feedback message after saving as bookmark"
+  },
+  "sidebarCopiedFeedbackUrl": {
+    "message": "Link copied",
+    "description": "Feedback message after copying a URL"
+  },
+  "sidebarCopiedFeedbackMarkdown": {
+    "message": "Markdown copied",
+    "description": "Feedback message after copying as markdown"
+  },
+  "sidebarCopiedFeedbackHtml": {
+    "message": "HTML copied",
+    "description": "Feedback message after copying as HTML"
   }
 }

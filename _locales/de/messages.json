@@ -99,9 +99,9 @@
     "message": "Aktion der Toolbar-Schaltfläche oder des Kontextmenüs mit verschiedenen Modifikatortasten",
     "description": "Abschnittsüberschrift"
   },
-  "sectionMiscellaneous": {
-    "message": "Anzeige-Optionen",
-    "description": "Abschnitt"
+  "sectionInterfaceOptions": {
+    "message": "Benutzeroberfläche",
+    "description": "Abschnitt für Benutzeroberflächen-Optionen"
   },
   "sectionKeyboardShortcut": {
     "message": "Tipp: Optionales Tastaturkürzel einrichten",
@@ -157,7 +157,7 @@
     "message": "URL",
     "description": "URL"
   },
-  "sectionMiscellaneousOptions": {
+  "sectionAdditionalOptions": {
     "message": "Verschiedene Optionen",
     "description": "Abschnitt für verschiedene Optionen"
   },
@@ -192,5 +192,109 @@
   "tooltipCopyCleanHtml": {
     "message": "Sauberen Titel+Link als HTML-Link kopieren",
     "description": "Tooltip zum Kopieren des gereinigten Links als HTML"
+  },
+  "sidebarName": {
+    "message": "Link-Speicher",
+    "description": "Name der Sidebar für den Link-Speicher"
+  },
+  "sidebarTitle": {
+    "message": "Link-Speicher",
+    "description": "Titel in der Sidebar"
+  },
+  "sidebarEmpty": {
+    "message": "Keine Links gespeichert.",
+    "description": "Hinweis, wenn keine Links im Speicher sind"
+  },
+  "sidebarPrivateWindowNotice": {
+    "message": "Hinweis: Link-Speicher ist in privaten Fenstern deaktiviert.",
+    "description": "Hinweis für private Fenster"
+  },
+  "sidebarClearAll": {
+    "message": "Alle löschen",
+    "description": "Button zum Löschen aller Links"
+  },
+  "sidebarClearAllConfirm": {
+    "message": "Möchten Sie wirklich alle gespeicherten Links löschen?",
+    "description": "Bestätigungsnachricht zum Löschen aller Links"
+  },
+  "sidebarCopyAgain": {
+    "message": "Link kopieren",
+    "description": "Button zum erneuten Kopieren eines Links"
+  },
+  "sidebarCopyAgainMarkdown": {
+    "message": "Markdown kopieren",
+    "description": "Button zum erneuten Kopieren als Markdown"
+  },
+  "sidebarCopyAgainHtml": {
+    "message": "HTML kopieren",
+    "description": "Button zum erneuten Kopieren als HTML"
+  },
+  "sidebarCopyTooltipUrl": {
+    "message": "Link kopieren",
+    "description": "Tooltip für Link kopieren"
+  },
+  "sidebarCopyTooltipMarkdown": {
+    "message": "Als Markdown kopieren",
+    "description": "Tooltip für Markdown kopieren"
+  },
+  "sidebarCopyTooltipHtml": {
+    "message": "Als HTML kopieren",
+    "description": "Tooltip für HTML kopieren"
+  },
+  "sidebarBookmarkTooltip": {
+    "message": "Als Lesezeichen speichern",
+    "description": "Tooltip für Lesezeichen speichern"
+  },
+  "sidebarDelete": {
+    "message": "Löschen",
+    "description": "Button zum Löschen eines einzelnen Links"
+  },
+  "sidebarOriginalLink": {
+    "message": "Original-Link",
+    "description": "Text für den Link zum Original-Link"
+  },
+  "optionLinkStorage": {
+    "message": "Link-Speicher aktivieren (Links werden im lokalen Speicher gespeichert)",
+    "description": "Option zum Aktivieren/Deaktivieren des Link-Speichers"
+  },
+  "sectionLinkStorage": {
+    "message": "Link-Speicher",
+    "description": "Abschnitt für Link-Speicher-Optionen"
+  },
+  "sidebarLimitNotice": {
+    "message": "Hinweis: Es werden maximal 100 Links gespeichert. Ältere Links werden automatisch gelöscht, wenn das Limit erreicht ist.",
+    "description": "Hinweis zum Speicherlimit"
+  },
+  "sidebarBookmarkButton": {
+    "message": "Als Lesezeichen speichern",
+    "description": "Button zum Speichern als Lesezeichen"
+  },
+  "sidebarBookmarkError": {
+    "message": "Fehler: Lesezeichen konnte nicht erstellt werden. Bitte stellen Sie sicher, dass die Lesezeichen-Berechtigung aktiviert ist.",
+    "description": "Fehlermeldung beim Speichern als Lesezeichen"
+  },
+  "sidebarSettingsButton": {
+    "message": "Einstellungen",
+    "description": "Button zum Öffnen der Extension-Einstellungen"
+  },
+  "sidebarCopiedFeedback": {
+    "message": "Kopiert!",
+    "description": "Feedback-Nachricht nach dem Kopieren"
+  },
+  "sidebarBookmarkedFeedback": {
+    "message": "In \"Weitere Lesezeichen\" gespeichert",
+    "description": "Feedback-Nachricht nach dem Speichern als Lesezeichen"
+  },
+  "sidebarCopiedFeedbackUrl": {
+    "message": "Link kopiert",
+    "description": "Feedback-Nachricht nach dem Kopieren einer URL"
+  },
+  "sidebarCopiedFeedbackMarkdown": {
+    "message": "Markdown kopiert",
+    "description": "Feedback-Nachricht nach dem Kopieren als Markdown"
+  },
+  "sidebarCopiedFeedbackHtml": {
+    "message": "HTML kopiert",
+    "description": "Feedback-Nachricht nach dem Kopieren als HTML"
   }
 }

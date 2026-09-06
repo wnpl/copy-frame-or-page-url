@@ -13,14 +13,23 @@ A Firefox WebExtension that lets you quickly copy URLs from frames, links, or th
 - **Modifier Key Support**: Use Shift+click or Ctrl+click (Cmd+click on Mac) on the toolbar button for different formats
 - **Unicode Decoding**: Option to decode Unicode characters in URLs (e.g., 茶 instead of `%E8%8C%B6`)
 - **Link Cleaning**: Option to clean links by removing tracking parameters (UTM, fbclid, etc.) using [link-cleaner-js](https://github.com/corbindavenport/link-cleaner-js)
+- **Tab Context Menu**: Right-click on any tab to copy its URL (new in v1.7)
 - **Address Bar Button**: Optional button in the address bar (page action)
 - **Keyboard Shortcuts**: Configurable keyboard shortcuts for quick access
 
 ## Installation
 
-### From Source (Recommended for this Fork)
+### Recommended: Install from AMO
 
-Since this is a modified fork, there is currently no separate AMO listing. You can install it directly from source:
+The easiest way to install this extension is from the official Mozilla Add-ons store:
+
+[**Copy Link to Page on Firefox Add-ons**](https://addons.mozilla.org/firefox/addon/copy-link-to-page/)
+
+This is the recommended installation method as it provides automatic updates and is the officially reviewed version.
+
+### From Source
+
+You can also install it directly from source:
 
 1. Clone this repository or download the source code
 2. In Firefox, go to `about:debugging`
@@ -28,9 +37,7 @@ Since this is a modified fork, there is currently no separate AMO listing. You c
 4. Click "Load Temporary Add-on..."
 5. Select any file in the extension directory (e.g., `manifest.json`)
 
-### Original AMO Listing
-
-The original extension is available on [Mozilla Add-ons](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/) by Jefferson "jscher2000" Scher.
+Note: Source-based installations won't receive automatic updates.
 
 ## Usage
 
@@ -72,10 +79,12 @@ Open the Options page via:
 |---------|-------------|---------|
 | **Show context menu item on all pages, framed or not** | Shows the "Copy Page URL" context menu item on all pages, not just framed pages | ✅ Enabled |
 | **Show button inside address bar** | Displays a button in the address bar (page action) | ❌ Disabled |
+| **Show "Copy tab link" in tab context menu** | Shows an additional context menu item when right-clicking on tabs | ✅ Enabled |
 | **Plain click** | Format for plain click on toolbar button | Plain URL |
 | **Shift+click** | Format for Shift+click on toolbar button | Markdown |
 | **Ctrl+click** | Format for Ctrl+click on toolbar button | HTML |
 | **Decode Unicode characters in the URL** | Decodes Unicode characters (e.g., 茶 instead of `%E8%8C%B6`) | ✅ Enabled |
+| **Clean links (remove tracking parameters)** | Removes tracking parameters like UTM, fbclid, etc. from URLs before copying | ❌ Disabled |
 
 ### Format Options
 
@@ -167,8 +176,8 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for det
 ## Related Repositories
 
 - [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url) - Original repository by Jefferson Scher
-- [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url) - Original repository by Jefferson Scher
-- [Mozilla Add-ons Listing](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/) - Original extension on AMO
+- [Mozilla Add-ons Listing](https://addons.mozilla.org/firefox/addon/copy-link-to-page/) - This fork on AMO
+- [Original AMO Listing](https://addons.mozilla.org/firefox/addon/copy-frame-or-page-url/) - Original extension on AMO by Jefferson Scher
 
 ## License
 

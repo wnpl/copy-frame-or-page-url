@@ -42,14 +42,16 @@
   "options_ui": {
     "page": "options.html"
   },
-  "sidebars": [
-    {
-      "id": "link-storage-sidebar",
-      "name": "__MSG_sidebarName__",
-      "entry_point": "sidebar.html",
-      "open_at_install": false
+  "sidebar_action": {
+    "default_panel": "sidebar.html",
+    "default_title": "__MSG_sidebarName__",
+    "default_icon": {
+      "16": "icons/link-16.svg",
+      "32": "icons/link-32.svg",
+      "48": "icons/link-48.svg",
+      "64": "icons/link-64.svg"
     }
-  ],
+  },
   "action": {
     "default_icon": {
       "16": "icons/link-16.svg",

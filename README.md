@@ -1,8 +1,8 @@
 # Copy Frame or Page URL (Decoded)
 
-A Firefox WebExtension that lets you quickly copy URLs from frames, links, or the current page to your clipboard. Supports plain URLs, Markdown links, and HTML links.
+A Firefox WebExtension that lets you quickly copy URLs from frames, links, or the current page to your clipboard. Supports plain URLs, Markdown links, and HTML links. **Version 2.0 introduces Link Storage with sidebar history!**
 
-**Note:** This is a modified fork of the original extension. The original extension by Jefferson "jscher2000" Scher is available at [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url). This fork by [Stefan Winopal](https://github.com/wnpl) adds Manifest V3 migration, icon refresh with FirefoxUX acorn-icons, dark mode styling, internationalization support, automatic theme switching, build automation, and improved options.
+**Note:** This is a modified fork of the original extension. The original extension by Jefferson "jscher2000" Scher is available at [jscher2000/copy-frame-or-page-url](https://github.com/jscher2000/copy-frame-or-page-url). This fork by [Stefan Winopal](https://github.com/wnpl) adds Manifest V3 migration, icon refresh with FirefoxUX acorn-icons, dark mode styling, internationalization support, automatic theme switching, build automation, improved options, and **Link Storage feature in v2.0**.
 
 ## Features
 
@@ -85,6 +85,7 @@ Open the Options page via:
 | **Ctrl+click** | Format for Ctrl+click on toolbar button | HTML |
 | **Decode Unicode characters in the URL** | Decodes Unicode characters (e.g., 茶 instead of `%E8%8C%B6`) | ✅ Enabled |
 | **Clean links (remove tracking parameters)** | Removes tracking parameters like UTM, fbclid, etc. from URLs before copying | ❌ Disabled |
+| **Enable Link Storage** | Save copied links in history with timestamp (accessible via sidebar) | ✅ Enabled |
 
 ### Format Options
 
@@ -126,11 +127,19 @@ This extension supports multiple languages:
 ├── manifest.json       # Extension manifest
 ├── options.html        # Options page
 ├── options.js          # Options page logic
+├── sidebar.html        # Link Storage sidebar (new in v2.0)
+├── sidebar.js          # Sidebar logic
+├── lib/                 # Libraries
+│   └── linkcleaner.js   # Link cleaning functionality
 └── icons/              # Extension icons
     ├── link-16.svg
     ├── link-32.svg
     ├── link-48.svg
     └── link-64.svg
+    ├── checkmark-16.svg  # Success feedback icons (v2.0)
+    ├── checkmark-32.svg
+    ├── checkmark-48.svg
+    └── checkmark-64.svg
 ```
 
 ### Building
